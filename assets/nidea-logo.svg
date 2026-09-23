@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 172 40" fill="none" role="img" aria-label="NIDEA">
+  <!-- Símbolo: arco (n / nicho / puerta) con un punto de luz -->
+  <path d="M5 38V17a12 12 0 0 1 24 0v21" stroke="#2A2420" stroke-width="4.2"/>
+  <circle cx="17" cy="29" r="3.6" fill="#E2A650"/>
+  <!-- Logotipo: trazos geométricos -->
+  <g stroke="#2A2420" stroke-width="2.2" transform="translate(48 10)">
+    <path d="M1.1 20V1.5L14.9 18.5V0" stroke-linejoin="bevel"/>
+    <path d="M26 0v20"/>
+    <path d="M37.1 1.1v17.8h4.4a8.9 8.9 0 0 0 0-17.8z"/>
+    <path d="M71 1.1H60.1v17.8H71M60.1 10h9.4"/>
+    <path d="M79 20.4 87.5 .4l8.5 20M82 13.4h11"/>
+  </g>
+</svg>

@@ -1,0 +1,844 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>NIDEA · Casas inteligentes en el Bajío</title>
+<meta name="description" content="NIDEA diseña, instala y opera casas inteligentes completas en León, Querétaro y San Miguel de Allende. Luz, clima, accesos, seguridad y energía solar en una sola app.">
+<meta name="theme-color" content="#F7F6F3">
+<meta property="og:title" content="NIDEA · Tu casa ya sabe lo que sigue">
+<meta property="og:description" content="Casas inteligentes completas, integradas desde el plano y alimentadas por el sol.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- Íconos -->
+<svg class="sprite" aria-hidden="true">
+  <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2V16h5v-.1c0-.8.4-1.5 1-2A6 6 0 0 0 12 3z"/></symbol>
+  <symbol id="i-cam" viewBox="0 0 24 24"><rect x="3" y="7" width="13" height="10" rx="2"/><path d="M16 11l5-3v8l-5-3"/></symbol>
+  <symbol id="i-gate" viewBox="0 0 24 24"><path d="M3 20V5M21 20V5M3 8h18M7.5 8v12M12 8v12M16.5 8v12"/></symbol>
+  <symbol id="i-temp" viewBox="0 0 24 24"><path d="M10 14V5a2 2 0 1 1 4 0v9a4 4 0 1 1-4 0z"/></symbol>
+  <symbol id="i-curtain" viewBox="0 0 24 24"><path d="M3 4h18M5 4v16c2 0 3.5-6 4.5-16M19 4v16c-2 0-3.5-6-4.5-16"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></symbol>
+  <symbol id="i-unlock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 7.7-1.5"/></symbol>
+  <symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 16v-5a6 6 0 0 1 12 0v5l2 2H4zM10 21h4"/></symbol>
+  <symbol id="i-speaker" viewBox="0 0 24 24"><rect x="6" y="3" width="12" height="18" rx="2"/><circle cx="12" cy="14" r="3"/><circle cx="12" cy="7.5" r=".8"/></symbol>
+  <symbol id="i-tv" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="12" rx="1.5"/><path d="M8 21h8"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 5-3 8.5-7 10-4-1.5-7-5-7-10V6z"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M5.5 21V11a6.5 6.5 0 0 1 13 0v10"/><circle cx="12" cy="16.2" r="1.7"/></symbol>
+  <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 3 5 14h6l-1 7 8-11h-6z"/></symbol>
+  <symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M16.5 6.5l3 3"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></symbol>
+  <symbol id="i-film" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M10 9.5v5l4-2.5z"/></symbol>
+  <symbol id="i-glass" viewBox="0 0 24 24"><path d="M8 3h8l-.8 6a3.2 3.2 0 0 1-6.4 0zM12 12.5V20M9 21h6"/></symbol>
+  <symbol id="i-out" viewBox="0 0 24 24"><path d="M14 4h5v16h-5M10 8l-4 4 4 4M6 12h9"/></symbol>
+  <symbol id="i-plane" viewBox="0 0 24 24"><path d="M3 12.5 21 5l-7.5 18-2.3-8.2z"/></symbol>
+  <symbol id="i-car" viewBox="0 0 24 24"><path d="M4 16v-4l2-5h12l2 5v4zM4 16v2.5M20 16v2.5"/><circle cx="8" cy="13" r=".9"/><circle cx="16" cy="13" r=".9"/></symbol>
+  <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M5 19c0-8 5-14 15-14 0 10-6 15-14 15M5 19l8-8"/></symbol>
+  <symbol id="i-share" viewBox="0 0 24 24"><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="m8.2 10.8 7.6-3.6M8.2 13.2l7.6 3.6"/></symbol>
+</svg>
+
+<a class="skip" href="#contenido">Saltar al contenido</a>
+
+<!-- Encabezado -->
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#inicio" aria-label="NIDEA, inicio">
+      <svg class="brand-mark" viewBox="0 0 34 40" aria-hidden="true"><path d="M5 38V17a12 12 0 0 1 24 0v21"/><circle cx="17" cy="29" r="3.6"/></svg>
+      <svg class="brand-word" viewBox="0 0 97 21" aria-hidden="true"><g><path d="M1.1 20V1.5L14.9 18.5V0" stroke-linejoin="bevel"/><path d="M26 0v20"/><path d="M37.1 1.1v17.8h4.4a8.9 8.9 0 0 0 0-17.8z"/><path d="M71 1.1H60.1v17.8H71M60.1 10h9.4"/><path d="M79 20.4 87.5.4l8.5 20M82 13.4h11"/></g></svg>
+    </a>
+    <nav class="nav-links" id="navLinks" aria-label="Principal">
+      <a href="#un-dia">Un día en casa</a>
+      <a href="#app">La app</a>
+      <a href="#energia">Energía</a>
+      <a href="#niveles">Niveles</a>
+      <a href="#arquitectos">Arquitectos</a>
+      <a class="nav-cta-mobile" href="#visita">Agendar una visita</a>
+    </nav>
+    <a class="btn btn-small nav-cta" href="#visita">Agendar una visita</a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Abrir menú"><span></span><span></span></button>
+  </div>
+</header>
+
+<main id="contenido">
+
+<!-- 1 · Portada -->
+<section class="hero" id="inicio">
+  <div class="hero-inner wrap">
+    <div class="hero-copy">
+      <h1 class="hero-title"><span>Tu casa ya sabe</span> <span>lo que sigue.</span></h1>
+      <p class="hero-lede">Abre las cortinas con el primer sol, te recibe con la luz justa y se cuida sola mientras duermes. NIDEA diseña, instala y opera casas inteligentes completas en el Bajío.</p>
+      <div class="hero-actions">
+        <a class="btn" href="#visita">Agendar una visita</a>
+        <a class="btn btn-ghost" href="#un-dia">Vivir un día en casa</a>
+      </div>
+      <p class="hero-cities">León, Querétaro, San Miguel de Allende y el resto del Bajío</p>
+    </div>
+    <figure class="hero-art" aria-hidden="true">
+      <svg id="heroArt" viewBox="104 150 392 566" preserveAspectRatio="xMidYMid meet">
+        <defs>
+          <linearGradient id="hSky" x1="0" y1="0" x2="0" y2="1">
+            <stop id="hSkyTop" offset="0" stop-color="#3A4058"/>
+            <stop id="hSkyMid" offset=".62" stop-color="#8E7D86"/>
+            <stop id="hSkyLow" offset="1" stop-color="#E7B98F"/>
+          </linearGradient>
+          <radialGradient id="hSunGlow">
+            <stop offset="0" stop-color="#F6D199" stop-opacity=".9"/>
+            <stop offset=".35" stop-color="#F1C27F" stop-opacity=".35"/>
+            <stop offset="1" stop-color="#F1C27F" stop-opacity="0"/>
+          </radialGradient>
+          <linearGradient id="hReveal" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#CBC4B9"/>
+            <stop offset="1" stop-color="#D9D3C9"/>
+          </linearGradient>
+          <clipPath id="hArch"><path d="M140 690V330a160 160 0 0 1 320 0v360z"/></clipPath>
+        </defs>
+        <g clip-path="url(#hArch)">
+          <rect x="100" y="150" width="400" height="560" fill="url(#hSky)"/>
+          <g id="hSun">
+            <circle cx="300" cy="0" r="130" fill="url(#hSunGlow)"/>
+            <circle cx="300" cy="0" r="34" fill="#F4C47E"/>
+          </g>
+          <path id="hHillFar" d="M100 590c40-18 70-24 110-14s70-30 110-26 80 26 120 16 50-8 60-4v150H100z" fill="#9B8580"/>
+          <path id="hHillNear" d="M100 632c50-10 90-2 140-10s110-22 160-12 50 8 60 8v90H100z" fill="#6E5D57"/>
+          <path d="M140 690V330a160 160 0 0 1 320 0v8a152 152 0 0 0-304 0v352z" fill="url(#hReveal)"/>
+        </g>
+        <rect x="126" y="690" width="348" height="9" fill="#D3CDC3"/>
+        <rect x="126" y="699" width="348" height="3" fill="#2A2420" opacity=".06"/>
+      </svg>
+    </figure>
+  </div>
+</section>
+
+<!-- 2 · Un día en una casa NIDEA -->
+<section class="day" id="un-dia" aria-labelledby="dayTitle">
+  <div class="wrap day-intro">
+    <h2 class="h2" id="dayTitle">Un día en una casa NIDEA.</h2>
+    <p class="lede">Desliza despacio. Desde el primer sol hasta que se apaga la última luz, la casa hace lo suyo sin que nadie toque un botón.</p>
+  </div>
+
+  <div class="day-track" id="dayTrack">
+    <div class="day-sticky">
+      <div class="day-scene" id="dayScene">
+        <svg id="house" role="img" aria-label="Ilustración de una casa NIDEA que cambia a lo largo del día" viewBox="0 0 1200 720" preserveAspectRatio="xMidYMax slice">
+          <defs>
+            <linearGradient id="sky" gradientUnits="userSpaceOnUse" x1="0" y1="-400" x2="0" y2="620">
+              <stop id="skyTop" offset="0" stop-color="#C9D5DB"/>
+              <stop id="skyBottom" offset="1" stop-color="#EFEEEA"/>
+            </linearGradient>
+            <radialGradient id="sunGlow">
+              <stop offset="0" stop-color="#FBE1AE" stop-opacity=".95"/>
+              <stop offset=".3" stop-color="#F6CF8C" stop-opacity=".35"/>
+              <stop offset="1" stop-color="#F6CF8C" stop-opacity="0"/>
+            </radialGradient>
+            <radialGradient id="lampGlow">
+              <stop offset="0" stop-color="#FFD9A0" stop-opacity=".9"/>
+              <stop offset=".4" stop-color="#F7C27A" stop-opacity=".3"/>
+              <stop offset="1" stop-color="#F7C27A" stop-opacity="0"/>
+            </radialGradient>
+            <pattern id="pleat" width="10" height="10" patternUnits="userSpaceOnUse">
+              <rect width="1.4" height="10" fill="#000" opacity=".08"/>
+              <rect x="5" width="1" height="10" fill="#fff" opacity=".18"/>
+            </pattern>
+            <clipPath id="gateClip"><rect x="955" y="490" width="130" height="110"/></clipPath>
+            <clipPath id="landClip">
+              <path d="M-900 470C-700 440-500 452-300 440S0 420 120 438s200 12 300-6 240 4 340-12 240 14 360 6 300 10 700 4V900H-900z"/>
+              <rect x="388" y="262" width="304" height="340"/>
+              <rect x="672" y="408" width="272" height="194"/>
+              <rect x="932" y="450" width="176" height="152"/>
+              <ellipse cx="1150" cy="440" rx="110" ry="80"/>
+            </clipPath>
+          </defs>
+
+          <!-- Cielo -->
+          <rect x="-900" y="-800" width="3000" height="1500" fill="url(#sky)"/>
+          <g id="stars" fill="#fff"></g>
+          <g id="moon" opacity="0">
+            <circle r="60" fill="url(#sunGlow)" opacity=".25"/>
+            <circle r="19" fill="#EFE9DC"/>
+            <circle r="17" cx="8" cy="-5" fill="#1B2135" id="moonShade"/>
+          </g>
+          <g id="sun">
+            <circle r="150" fill="url(#sunGlow)"/>
+            <circle r="30" fill="#F5CE88" id="sunDisc"/>
+          </g>
+
+          <!-- Paisaje -->
+          <path id="mtnFar" d="M-900 470C-700 440-500 452-300 440S0 420 120 438s200 12 300-6 240 4 340-12 240 14 360 6 300 10 700 4V900H-900z" fill="#B7B2AC"/>
+          <path id="mtnNear" d="M-900 530c200-24 400-10 560-22S20 492 160 512s240-18 380-10 260 18 400 4 260-6 440 2 400 12 520 6V900H-900z" fill="#A69C90"/>
+          <rect x="-900" y="598" width="3000" height="300" fill="#D5CABB" id="ground"/>
+          <rect x="-900" y="648" width="3000" height="4" fill="#C3B7A7"/>
+          <path d="M940 600h160l70 52H880z" fill="#DDD3C5"/>
+
+          <!-- Muro de piedra y agaves -->
+          <rect x="280" y="548" width="120" height="52" fill="#BFB2A2"/>
+          <path d="M280 566h34M322 566h40M370 566h30M296 548v18M344 548v18M388 548v18M280 584h22M310 584h48M366 584h34M302 566v18M358 566v18M326 584v16M380 584v16" stroke="#A89A89" stroke-width="1.4" fill="none"/>
+          <g fill="#8C9477">
+            <path d="M318 600c-14-8-26-24-30-40 12 10 22 22 30 40zm4 0c-2-16 0-34 6-48 4 16 2 34-6 48zm4 0c8-14 20-26 34-32-8 14-18 26-34 32z"/>
+            <path d="M372 600c-10-6-18-18-20-28 8 6 16 16 20 28zm3 0c-1-12 1-24 5-34 3 11 1 24-5 34zm3 0c6-10 14-18 24-22-6 10-13 18-24 22z"/>
+          </g>
+
+          <!-- Volumen A: dos niveles -->
+          <rect x="400" y="300" width="280" height="300" fill="#DCD7CE"/>
+          <rect x="388" y="288" width="304" height="14" fill="#CEC8BE"/>
+          <g id="panels">
+            <g fill="#3F4652" stroke="#5E6672" stroke-width=".8">
+              <path d="M412 288h58l-6-24h-46z"/><path d="M478 288h58l-6-24h-46z"/><path d="M544 288h58l-6-24h-46z"/><path d="M610 288h58l-6-24h-46z"/>
+            </g>
+            <path d="M431 288l-2-24M451 288l2-24M497 288l-2-24M517 288l2-24M563 288l-2-24M583 288l2-24M629 288l-2-24M649 288l2-24M414 276h54M480 276h54M546 276h54M612 276h54" stroke="#56606C" stroke-width=".6"/>
+            <g id="panelGlint" fill="#F2C57E" opacity="0">
+              <path d="M412 288h58l-6-24h-46z"/><path d="M478 288h58l-6-24h-46z"/><path d="M544 288h58l-6-24h-46z"/><path d="M610 288h58l-6-24h-46z"/>
+            </g>
+          </g>
+          <rect x="400" y="430" width="280" height="40" fill="#D4CEC4"/>
+
+          <!-- Volumen B: un nivel con madera -->
+          <rect x="680" y="420" width="250" height="180" fill="#E5E1D9"/>
+          <rect x="672" y="408" width="272" height="14" fill="#CEC8BE"/>
+          <rect x="858" y="422" width="72" height="178" fill="#A0714E"/>
+          <path d="M866 422v178M874 422v178M882 422v178M890 422v178M898 422v178M906 422v178M914 422v178M922 422v178" stroke="#8C5F3F" stroke-width="1"/>
+
+          <!-- Cochera -->
+          <rect x="940" y="462" width="160" height="138" fill="#D8D3C9"/>
+          <rect x="932" y="450" width="176" height="14" fill="#CEC8BE"/>
+
+          <!-- Mezquite -->
+          <g id="tree">
+            <path d="M1150 600c2-40-6-70-4-96 2-14 10-22 18-34M1147 540c-10-14-24-22-38-26M1152 520c12-10 26-14 40-14" stroke="#6E5A48" stroke-width="7" fill="none" stroke-linecap="round"/>
+            <ellipse cx="1150" cy="450" rx="92" ry="44" fill="#7F8A68"/>
+            <ellipse cx="1100" cy="470" rx="54" ry="28" fill="#8D9776"/>
+            <ellipse cx="1196" cy="466" rx="50" ry="26" fill="#737E5E"/>
+            <ellipse cx="1160" cy="424" rx="60" ry="26" fill="#96A080"/>
+          </g>
+
+          <g fill="#2A2420" opacity=".07"><rect x="400" y="302" width="280" height="6"/><rect x="680" y="422" width="250" height="6"/><rect x="940" y="464" width="160" height="5"/></g>
+
+          <!-- Tinte de hora (amanecer, atardecer, noche) sobre tierra y casa -->
+          <rect id="tint" x="-900" y="-800" width="3000" height="1700" fill="#141A2C" opacity="0" clip-path="url(#landClip)"/>
+
+          <!-- Ventanas: se pintan desde JS -->
+          <!-- Recámara (arriba) -->
+          <rect class="win" id="winBed" x="428" y="334" width="224" height="96" fill="#CBD2D0"/>
+          <rect class="curtain" id="curBedL" x="428" y="334" width="112" height="96" fill="#EFE8DC"/>
+          <rect class="curtain" id="curBedR" x="540" y="334" width="112" height="96" fill="#EFE8DC"/>
+          <g fill="#9A6B4A" id="slats"><rect x="598" y="334" width="4" height="96"/><rect x="607" y="334" width="4" height="96"/><rect x="616" y="334" width="4" height="96"/><rect x="625" y="334" width="4" height="96"/><rect x="634" y="334" width="4" height="96"/><rect x="643" y="334" width="4" height="96"/></g>
+          <rect x="428" y="334" width="224" height="96" fill="none" stroke="#B9B2A7" stroke-width="3"/>
+
+          <!-- Sala (abajo, piso a techo) -->
+          <rect class="win" id="winLiving" x="420" y="470" width="240" height="130" fill="#CBD2D0"/>
+          <g id="livingInterior">
+            <rect x="444" y="566" width="124" height="34" rx="6" class="silhouette"/>
+            <rect x="444" y="552" width="124" height="20" rx="6" class="silhouette"/>
+            <rect x="624" y="578" width="18" height="22" rx="2" class="silhouette"/>
+            <path d="M633 580c-10-12-16-30-12-44 6 12 10 26 12 44zm0 0c4-16 12-30 22-38-4 14-10 28-22 38z" class="silhouette"/>
+            <path d="M536 470v40" stroke-width="1.5" class="silhouette-line"/>
+            <path d="M526 518h20l-4-10h-12z" class="silhouette"/>
+          </g>
+          <rect class="curtain" id="curLivL" x="420" y="470" width="120" height="130" fill="#EFE8DC"/>
+          <rect class="curtain" id="curLivR" x="540" y="470" width="120" height="130" fill="#EFE8DC"/>
+          <path d="M500 470v130M580 470v130" stroke="#B9B2A7" stroke-width="2"/>
+          <rect x="420" y="470" width="240" height="130" fill="none" stroke="#B9B2A7" stroke-width="3"/>
+          <circle id="glowLiving" cx="536" cy="520" r="90" fill="url(#lampGlow)" opacity="0"/>
+
+          <!-- Cocina -->
+          <rect class="win" id="winKitchen" x="700" y="452" width="145" height="114" fill="#CBD2D0"/>
+          <rect class="curtain" id="curKitL" x="700" y="452" width="72.5" height="114" fill="#EFE8DC"/>
+          <rect class="curtain" id="curKitR" x="772.5" y="452" width="72.5" height="114" fill="#EFE8DC"/>
+          <rect x="700" y="452" width="145" height="114" fill="none" stroke="#B9B2A7" stroke-width="3"/>
+
+          <!-- Puerta y cerradura -->
+          <rect x="876" y="480" width="40" height="120" fill="#7E5536"/>
+          <path d="M908 528v26" stroke="#D9C9A8" stroke-width="2.5" stroke-linecap="round"/>
+          <rect x="864" y="530" width="7" height="16" rx="1.5" fill="#3A332E"/>
+          <circle id="lockLed" cx="867.5" cy="535" r="1.8" fill="#8FBF8A"/>
+
+          <!-- Cochera: interior, portón -->
+          <rect id="garageInside" x="955" y="490" width="130" height="110" fill="#3A3632"/>
+          <rect id="garageLamp" x="1000" y="492" width="40" height="3" rx="1.5" fill="#F4D3A0" opacity="0"/>
+          <g clip-path="url(#gateClip)">
+            <g id="gate">
+              <rect x="955" y="490" width="130" height="110" fill="#8E6243"/>
+              <g fill="#A57451"><rect x="955" y="492" width="130" height="8"/><rect x="955" y="503" width="130" height="8"/><rect x="955" y="514" width="130" height="8"/><rect x="955" y="525" width="130" height="8"/><rect x="955" y="536" width="130" height="8"/><rect x="955" y="547" width="130" height="8"/><rect x="955" y="558" width="130" height="8"/><rect x="955" y="569" width="130" height="8"/><rect x="955" y="580" width="130" height="8"/><rect x="955" y="591" width="130" height="8"/></g>
+            </g>
+          </g>
+          <g id="camera"><rect x="1086" y="470" width="12" height="7" rx="2" fill="#4A4540"/><circle id="camLed" cx="1089" cy="473.5" r="1.4" fill="#E2A650" opacity="0"/></g>
+
+          <!-- Luces exteriores -->
+          <rect x="864" y="462" width="6" height="12" rx="1" fill="#4A4540"/>
+          <rect x="944" y="474" width="6" height="12" rx="1" fill="#4A4540"/>
+          <circle class="ext-glow" cx="867" cy="478" r="46" fill="url(#lampGlow)" opacity="0"/>
+          <circle class="ext-glow" cx="947" cy="490" r="46" fill="url(#lampGlow)" opacity="0"/>
+          <g id="pathLights">
+            <circle cx="760" cy="612" r="3" fill="#F4D3A0"/><circle cx="820" cy="612" r="3" fill="#F4D3A0"/><circle cx="360" cy="612" r="3" fill="#F4D3A0"/>
+            <circle cx="760" cy="612" r="22" fill="url(#lampGlow)"/><circle cx="820" cy="612" r="22" fill="url(#lampGlow)"/><circle cx="360" cy="612" r="22" fill="url(#lampGlow)"/>
+          </g>
+          <circle id="glowBed" cx="520" cy="382" r="80" fill="url(#lampGlow)" opacity="0"/>
+          <circle id="glowKitchen" cx="772" cy="505" r="70" fill="url(#lampGlow)" opacity="0"/>
+          <circle id="glowGarage" cx="1020" cy="540" r="70" fill="url(#lampGlow)" opacity="0"/>
+
+          <!-- Flujo de energía solar -->
+          <path id="flow" d="M540 290V300M686 296h8v124" stroke="#E9B566" stroke-width="3" fill="none" stroke-dasharray="4 10" opacity="0"/>
+
+          <!-- Auto -->
+          <g id="car" transform="translate(1400 604)">
+            <g id="carBody">
+              <path d="M0 36 6 22q4-6 16-8l22-2L62 0h46q10 0 18 10l14 4q10 2 10 12v10z" fill="#4E4843"/>
+              <path d="M66 4h38q8 0 14 8H60z" fill="#8E9AA2" opacity=".75"/>
+              <circle cx="32" cy="38" r="10" fill="#2D2825"/><circle cx="32" cy="38" r="4" fill="#77706A"/>
+              <circle cx="120" cy="38" r="10" fill="#2D2825"/><circle cx="120" cy="38" r="4" fill="#77706A"/>
+              <circle id="headGlow" cx="0" cy="26" r="40" fill="url(#lampGlow)" opacity="0"/>
+            </g>
+          </g>
+
+          <!-- Rayo de reconocimiento del auto -->
+          <g id="recognize" opacity="0"><circle cx="1020" cy="470" r="6" fill="none" stroke="#F2C57E" stroke-width="1.5"/></g>
+        </svg>
+
+        <dl class="day-readout" aria-live="off">
+          <div><dt>Sol</dt><dd id="roSolar">0.0 kW</dd></div>
+          <div><dt>Consumo</dt><dd id="roHouse">0.4 kW</dd></div>
+          <div><dt>Adentro</dt><dd id="roTemp">22°</dd></div>
+          <div><dt>Estado</dt><dd id="roState">Asegurada</dd></div>
+        </dl>
+      </div>
+
+      <div class="day-panel">
+        <p class="day-clock" id="dayClock" aria-hidden="true">6:30</p>
+        <div class="day-captions">
+          <article class="day-cap is-active" data-stage="0">
+            <h3>La casa despierta contigo.</h3>
+            <p>Las cortinas se abren poco a poco con el primer sol y la luz del baño se enciende tibia, al 30 %. El agua ya está caliente.</p>
+            <ul class="day-log"><li><time>6:20</time>Agua caliente lista</li><li><time>6:30</time>Cortinas de la recámara, abriendo</li><li><time>6:31</time>Baño al 30 %, luz cálida</li></ul>
+          </article>
+          <article class="day-cap" data-stage="1">
+            <h3>Sales. La casa se queda en calma.</h3>
+            <p>Sabe que ya no hay nadie. Cierra el portón, apaga lo que se quedó encendido, pone el clima en ahorro y vigila la entrada.</p>
+            <ul class="day-log"><li><time>8:14</time>Portón cerrado</li><li><time>8:15</time>Cuatro luces apagadas</li><li><time>8:15</time>Cámaras de la entrada activas</li></ul>
+          </article>
+          <article class="day-cap" data-stage="2">
+            <h3>El sol trabaja. La casa lo aprovecha.</h3>
+            <p>Con los paneles al máximo, pone a trabajar la lavadora y la bomba de la alberca, y enfría la sala con tu propia energía. A las cuatro baja a medias las cortinas del poniente.</p>
+            <ul class="day-log"><li><time>12:30</time>Lavadora con energía solar</li><li><time>13:00</time>Sala pre‑enfriada a 23°</li><li><time>16:00</time>Cortinas del poniente al 50 %</li></ul>
+          </article>
+          <article class="day-cap" data-stage="3">
+            <h3>Llegas, y ya te esperaba.</h3>
+            <p>Reconoce tu auto al entrar a la calle. Abre el portón, enciende la entrada y la sala en un tono cálido, y la casa ya está a 23°.</p>
+            <ul class="day-log"><li><time>19:12</time>Tu auto, reconocido a 200 m</li><li><time>19:13</time>Portón abierto</li><li><time>19:13</time>Escena “Llegar a casa”</li></ul>
+          </article>
+          <article class="day-cap" data-stage="4">
+            <h3>Todo en orden. Descansa.</h3>
+            <p>Cierra la puerta, baja las cortinas, apaga lo que nadie usa y activa el perímetro. Si te levantas, el pasillo se ilumina apenas.</p>
+            <ul class="day-log"><li><time>22:58</time>Puerta principal cerrada</li><li><time>23:00</time>Perímetro activo</li><li><time>23:00</time>Pasillo en modo nocturno, 5 %</li></ul>
+          </article>
+        </div>
+        <div class="day-timeline" role="group" aria-label="Momentos del día">
+          <div class="day-progress"><span id="dayProgress"></span></div>
+          <button type="button" data-go="0"><span>Amanecer</span><small>6:30</small></button>
+          <button type="button" data-go="1"><span>Mañana</span><small>8:15</small></button>
+          <button type="button" data-go="2"><span>Tarde</span><small>14:00</small></button>
+          <button type="button" data-go="3"><span>Llegada</span><small>19:15</small></button>
+          <button type="button" data-go="4"><span>Noche</span><small>23:00</small></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 · El problema -->
+<section class="problem" id="problema" aria-labelledby="probTitle">
+  <div class="wrap problem-grid">
+    <div class="problem-copy">
+      <h2 class="h2" id="probTitle">Hoy, una casa “inteligente” son doce apps que no se hablan.</h2>
+      <p class="lede">Un foco de una marca, la cámara de otra, el portón con su control y el inversor solar con su propia app. Cada una con contraseña, actualizaciones y soporte distintos.</p>
+      <ul class="problem-list">
+        <li><strong>Nada se coordina.</strong> La alarma no sabe que llegaste; el clima no sabe que hay sol.</li>
+        <li><strong>Todo se nota.</strong> Aparatos pegados a la pared, cables a la vista, controles en cada cajón.</li>
+        <li><strong>Nadie responde.</strong> Cuando algo falla, cada marca le echa la culpa a otra.</li>
+      </ul>
+      <div class="seg" role="tablist" aria-label="Comparar">
+        <button role="tab" aria-selected="true" id="chaosBtn" data-mode="chaos">Hoy</button>
+        <button role="tab" aria-selected="false" id="calmBtn" data-mode="calm">Con NIDEA</button>
+      </div>
+      <p class="problem-after" id="problemAfter">Un solo sistema, diseñado para tu casa. Una sola app. Un solo número al que llamar.</p>
+    </div>
+    <div class="apps-field" id="appsField" data-mode="chaos" aria-hidden="true">
+      <div class="app-tile" style="--x:8%;--y:6%;--r:-8deg;--c:#8A9A9E"><svg><use href="#i-bulb"/></svg><span>Focos</span><i>3</i></div>
+      <div class="app-tile" style="--x:40%;--y:2%;--r:5deg;--c:#6D6A75"><svg><use href="#i-cam"/></svg><span>Cámara</span></div>
+      <div class="app-tile" style="--x:72%;--y:10%;--r:-4deg;--c:#A08C6E"><svg><use href="#i-gate"/></svg><span>Portón</span><i>!</i></div>
+      <div class="app-tile" style="--x:18%;--y:30%;--r:6deg;--c:#7F8C7A"><svg><use href="#i-temp"/></svg><span>Clima</span></div>
+      <div class="app-tile" style="--x:52%;--y:26%;--r:-10deg;--c:#9E8378"><svg><use href="#i-curtain"/></svg><span>Cortinas</span><i>1</i></div>
+      <div class="app-tile" style="--x:80%;--y:36%;--r:7deg;--c:#B39A5E"><svg><use href="#i-sun"/></svg><span>Inversor</span><i>!</i></div>
+      <div class="app-tile" style="--x:4%;--y:56%;--r:-3deg;--c:#5F6B73"><svg><use href="#i-lock"/></svg><span>Cerradura</span></div>
+      <div class="app-tile" style="--x:34%;--y:52%;--r:9deg;--c:#7C8B92"><svg><use href="#i-drop"/></svg><span>Riego</span></div>
+      <div class="app-tile" style="--x:64%;--y:60%;--r:-7deg;--c:#8B7266"><svg><use href="#i-shield"/></svg><span>Alarma</span><i>5</i></div>
+      <div class="app-tile" style="--x:14%;--y:80%;--r:4deg;--c:#72786B"><svg><use href="#i-speaker"/></svg><span>Bocinas</span></div>
+      <div class="app-tile" style="--x:46%;--y:78%;--r:-6deg;--c:#6B6E78"><svg><use href="#i-tv"/></svg><span>TV</span></div>
+      <div class="app-tile" style="--x:78%;--y:82%;--r:8deg;--c:#9A8A7C"><svg><use href="#i-bell"/></svg><span>Timbre</span><i>2</i></div>
+      <div class="app-one">
+        <div class="app-one-icon"><svg viewBox="0 0 34 40"><path d="M5 38V17a12 12 0 0 1 24 0v21"/><circle cx="17" cy="29" r="3.6"/></svg></div>
+        <span>NIDEA</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 · La app -->
+<section class="app" id="app" aria-labelledby="appTitle">
+  <div class="wrap app-grid">
+    <div class="app-copy">
+      <h2 class="h2" id="appTitle">Toda tu casa, en una app que se entiende sola.</h2>
+      <p class="lede">La diseñamos nosotros, para casas como la tuya. Sin menús técnicos: escenas, espacios y lo que está pasando ahora.</p>
+      <div class="app-features" role="tablist" aria-label="Pantallas de la app">
+        <button role="tab" aria-selected="true" data-screen="home"><svg><use href="#i-home"/></svg><span><strong>Escenas</strong>Un toque para “Cena”, “Cine” o “Buenas noches”. La casa ajusta luz, cortinas, música y clima a la vez.</span></button>
+        <button role="tab" aria-selected="false" data-screen="energy"><svg><use href="#i-sun"/></svg><span><strong>Energía del día</strong>Cuánto generó el sol, cuánto usó tu casa y cuánto te ahorraste este mes.</span></button>
+        <button role="tab" aria-selected="false" data-screen="cams"><svg><use href="#i-cam"/></svg><span><strong>Cámaras</strong>La entrada y el jardín en vivo, con avisos solo cuando importa.</span></button>
+        <button role="tab" aria-selected="false" data-screen="access"><svg><use href="#i-key"/></svg><span><strong>Accesos</strong>Abre el portón desde donde estés y da llaves temporales a quien tú decidas.</span></button>
+      </div>
+    </div>
+
+    <div class="app-devices">
+      <!-- iPad -->
+      <div class="ipad-stage scale-stage" data-w="1180" data-h="820">
+        <div class="ipad scale-target">
+          <div class="ipad-screen">
+            <aside class="ip-side">
+              <div class="ip-brand"><svg viewBox="0 0 34 40"><path d="M5 38V17a12 12 0 0 1 24 0v21"/><circle cx="17" cy="29" r="3.6"/></svg><span>Casa Aldama</span></div>
+              <nav>
+                <span class="is-on"><svg><use href="#i-home"/></svg>Casa</span>
+                <span><svg><use href="#i-glass"/></svg>Escenas</span>
+                <span><svg><use href="#i-sun"/></svg>Energía</span>
+                <span><svg><use href="#i-cam"/></svg>Cámaras</span>
+                <span><svg><use href="#i-key"/></svg>Accesos</span>
+              </nav>
+              <div class="ip-side-foot"><span class="dot-ok"></span>Todo funcionando<br><small>Soporte NIDEA, en línea</small></div>
+            </aside>
+            <div class="ip-main">
+              <div class="ip-head">
+                <div><small>Martes, 7:42 p. m.</small><h4>Planta baja</h4></div>
+                <div class="ip-chips"><span class="chip is-on"><svg><use href="#i-glass"/></svg>Cena</span><span class="chip"><svg><use href="#i-film"/></svg>Cine</span><span class="chip"><svg><use href="#i-moon"/></svg>Buenas noches</span></div>
+              </div>
+              <div class="ip-plan">
+                <svg viewBox="0 0 640 420" id="ipPlan">
+                  <g class="rooms">
+                    <g class="room is-on" data-room="Sala"><rect x="20" y="20" width="250" height="200"/><circle class="lamp" cx="145" cy="120" r="70"/><text x="36" y="46">Sala</text><text class="val" x="36" y="66">60 %</text></g>
+                    <g class="room is-on" data-room="Comedor"><rect x="270" y="20" width="170" height="200"/><circle class="lamp" cx="355" cy="120" r="60"/><text x="286" y="46">Comedor</text><text class="val" x="286" y="66">40 %</text></g>
+                    <g class="room" data-room="Cocina"><rect x="440" y="20" width="180" height="200"/><circle class="lamp" cx="530" cy="120" r="60"/><text x="456" y="46">Cocina</text><text class="val" x="456" y="66">Apagada</text></g>
+                    <g class="room" data-room="Estudio"><rect x="20" y="220" width="170" height="180"/><circle class="lamp" cx="105" cy="310" r="55"/><text x="36" y="246">Estudio</text><text class="val" x="36" y="266">Apagada</text></g>
+                    <g class="room is-on" data-room="Entrada"><rect x="190" y="220" width="150" height="180"/><circle class="lamp" cx="265" cy="310" r="50"/><text x="206" y="246">Entrada</text><text class="val" x="206" y="266">30 %</text></g>
+                    <g class="room" data-room="Terraza"><rect x="340" y="220" width="280" height="180"/><circle class="lamp" cx="480" cy="310" r="70"/><text x="356" y="246">Terraza</text><text class="val" x="356" y="266">Apagada</text></g>
+                  </g>
+                  <path class="walls" d="M20 20h600v380H20zM270 20v70M270 150v70M440 20v80M440 170v50M20 220h60M130 220h210M400 220h220M190 220v60M190 340v60M340 220v180"/>
+                  <path class="doors" d="M270 90a60 60 0 0 1 0 60M440 100a70 70 0 0 1 0 70"/>
+                </svg>
+                <p class="ip-hint">Toca un espacio para encender o apagar</p>
+              </div>
+            </div>
+            <aside class="ip-right">
+              <div class="ip-card">
+                <small>Clima, sala</small>
+                <div class="ip-temp">23<span>°</span></div>
+                <p>Afuera 17°. Se mantiene hasta las 11 p. m.</p>
+              </div>
+              <div class="ip-card">
+                <small>Energía hoy</small>
+                <div class="ip-bars" aria-hidden="true"></div>
+                <p><strong>61 %</strong> de tu casa funcionó con sol</p>
+              </div>
+              <div class="ip-card ip-cam">
+                <small>Entrada</small>
+                <div class="cam-feed cam-entrada"></div>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </div>
+
+      <!-- iPhone -->
+      <div class="phone-stage scale-stage" data-w="390" data-h="844">
+        <div class="phone scale-target">
+          <div class="phone-screen" id="phone">
+            <div class="ph-status"><span>7:42</span><span class="island"></span><span class="ph-icons"><i class="sig"></i><i class="wifi"></i><i class="bat"></i></span></div>
+
+            <!-- Pantalla: Casa -->
+            <section class="ph-view is-on" data-view="home">
+              <small class="ph-greet">Buenas noches, Ana</small>
+              <h5 class="ph-title" id="phHomeTitle">Todo en calma. La sala está lista para cenar.</h5>
+              <div class="ph-status-row"><span><svg><use href="#i-temp"/></svg>23°</span><span><svg><use href="#i-lock"/></svg>Cerrada</span><span><svg><use href="#i-sun"/></svg>0.3 kW</span></div>
+              <h6>Escenas</h6>
+              <div class="ph-scenes" id="phScenes">
+                <button data-msg="Bienvenida. Entrada y sala encendidas, portón cerrándose."><svg><use href="#i-car"/></svg>Llegar a casa</button>
+                <button class="is-on" data-msg="Todo en calma. La sala está lista para cenar."><svg><use href="#i-glass"/></svg>Cena</button>
+                <button data-msg="Cortinas abajo, luz al 10 % y la pantalla encendida."><svg><use href="#i-film"/></svg>Cine</button>
+                <button data-msg="Puertas cerradas, perímetro activo. Que descanses."><svg><use href="#i-moon"/></svg>Buenas noches</button>
+                <button data-msg="Luces apagadas, clima en ahorro, cámaras vigilando."><svg><use href="#i-out"/></svg>Salir</button>
+                <button data-msg="La casa simula que hay alguien. Te avisamos de todo."><svg><use href="#i-plane"/></svg>Vacaciones</button>
+              </div>
+              <h6>Espacios</h6>
+              <div class="ph-rooms">
+                <div class="ph-room is-on"><span>Sala</span><small>Luz 60 %, 2700 K</small><b class="sw"></b></div>
+                <div class="ph-room is-on"><span>Comedor</span><small>Luz 40 %</small><b class="sw"></b></div>
+                <div class="ph-room"><span>Recámara</span><small>Cortinas abiertas</small><b class="sw"></b></div>
+              </div>
+            </section>
+
+            <!-- Pantalla: Energía -->
+            <section class="ph-view" data-view="energy">
+              <small class="ph-greet">Energía, hoy</small>
+              <h5 class="ph-title">El sol cubrió 61 % de lo que usó tu casa.</h5>
+              <div class="ph-energy-chart"><svg viewBox="0 0 340 150" id="phChart" preserveAspectRatio="none"></svg><div class="ph-axis"><span>0 h</span><span>6</span><span>12</span><span>18</span><span>24 h</span></div></div>
+              <div class="ph-legend"><span><i class="lg-sun"></i>Sol</span><span><i class="lg-house"></i>Casa</span></div>
+              <div class="ph-stats">
+                <div><small>Generaste</small><b>28.7 kWh</b></div>
+                <div><small>Usó tu casa</small><b>27.6 kWh</b></div>
+                <div class="wide"><small>Ahorro estimado este mes</small><b>$2,380</b></div>
+              </div>
+              <p class="ph-note"><svg><use href="#i-leaf"/></svg>Movimos la lavadora y la bomba al mediodía.</p>
+            </section>
+
+            <!-- Pantalla: Cámaras -->
+            <section class="ph-view" data-view="cams">
+              <small class="ph-greet">Cámaras</small>
+              <h5 class="ph-title">Nada fuera de lo normal hoy.</h5>
+              <div class="ph-cam"><div class="cam-feed cam-entrada"></div><span class="live">En vivo</span><span class="cam-name">Entrada</span></div>
+              <div class="ph-cam"><div class="cam-feed cam-jardin"></div><span class="live">En vivo</span><span class="cam-name">Jardín</span></div>
+              <h6>Hoy</h6>
+              <ul class="ph-events">
+                <li><span>Llegaste a casa</span><time>7:13 p. m.</time></li>
+                <li><span>Paquete en la entrada</span><time>12:41 p. m.</time></li>
+                <li><span>Rosa entró con su llave</span><time>9:02 a. m.</time></li>
+              </ul>
+            </section>
+
+            <!-- Pantalla: Accesos -->
+            <section class="ph-view" data-view="access">
+              <small class="ph-greet">Accesos</small>
+              <h5 class="ph-title">Tu casa está cerrada.</h5>
+              <button class="ph-gate" id="phGate"><svg><use href="#i-gate"/></svg><span><b id="phGateTitle">Abrir portón</b><small id="phGateSub">Cerrado</small></span></button>
+              <div class="ph-lock-row">
+                <div class="ph-room is-on" data-lock><span>Puerta principal</span><small>Cerrada con llave</small><b class="sw"></b></div>
+                <div class="ph-room is-on" data-lock><span>Puerta de servicio</span><small>Cerrada con llave</small><b class="sw"></b></div>
+              </div>
+              <h6>Llaves temporales</h6>
+              <ul class="ph-keys">
+                <li><b>Rosa, limpieza</b><small>Lunes y jueves, de 9 a 14 h</small></li>
+                <li><b>Visita de Jorge</b><small>Hoy hasta las 11 p. m.</small></li>
+              </ul>
+              <button class="ph-share"><svg><use href="#i-share"/></svg>Compartir una llave</button>
+            </section>
+
+            <nav class="ph-tabs">
+              <button class="is-on" data-screen="home"><svg><use href="#i-home"/></svg>Casa</button>
+              <button data-screen="energy"><svg><use href="#i-sun"/></svg>Energía</button>
+              <button data-screen="cams"><svg><use href="#i-cam"/></svg>Cámaras</button>
+              <button data-screen="access"><svg><use href="#i-key"/></svg>Accesos</button>
+            </nav>
+            <span class="home-bar"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6 · Energía -->
+<section class="energy" id="energia" aria-labelledby="enTitle">
+  <div class="wrap">
+    <div class="energy-head">
+      <h2 class="h2" id="enTitle">La casa y el sol, trabajando juntos.</h2>
+      <p class="lede">Unos paneles solos generan energía a mediodía, cuando casi nadie está en casa. Una casa NIDEA sabe cuándo está brillando el sol y mueve a esas horas lo que puede esperar: la lavadora, la bomba de la alberca, el calentador, enfriar la casa antes de que llegues.</p>
+    </div>
+
+    <div class="energy-board">
+      <div class="energy-controls">
+        <div class="seg" role="tablist" aria-label="Tipo de casa">
+          <button role="tab" aria-selected="false" data-profile="conv">Solo paneles</button>
+          <button role="tab" aria-selected="true" data-profile="nidea">Casa NIDEA</button>
+        </div>
+        <div class="energy-legend">
+          <span><i class="lg-sun"></i>Generación solar</span>
+          <span><i class="lg-house"></i>Consumo de la casa</span>
+          <span><i class="lg-used"></i>Sol usado en casa</span>
+        </div>
+      </div>
+      <div class="energy-chart" id="energyChart" role="img" aria-label="Gráfica de generación solar contra consumo de la casa a lo largo de 24 horas"></div>
+      <div class="energy-stats">
+        <div class="stat"><b id="stSelf">59 %</b><span>del sol se usa en tu propia casa</span></div>
+        <div class="stat"><b id="stGrid">−60 %</b><span>de energía comprada a CFE contra una casa sin paneles</span></div>
+        <div class="stat"><b>DAC</b><span>Te ayuda a no caer en la tarifa de alto consumo, donde el kWh cuesta varias veces más</span></div>
+      </div>
+      <p class="fine">Ejemplo ilustrativo: casa de 300 m² en León con 6 kWp de paneles, en un día despejado. Cada proyecto se dimensiona con tus recibos reales.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 5 · Cómo trabajamos -->
+<section class="process" id="como" aria-labelledby="procTitle">
+  <div class="wrap">
+    <h2 class="h2" id="procTitle">Cómo trabajamos.</h2>
+    <p class="lede">Una sola responsabilidad, de principio a fin. Tú no coordinas a nadie.</p>
+    <ol class="steps">
+      <li class="step">
+        <svg class="step-art" viewBox="0 0 160 120" aria-hidden="true"><path class="draw" d="M10 10h140v100H10zM10 60h60v50M70 10v30M100 60h50M100 60v50M70 60h10"/><circle class="draw-dot" cx="40" cy="35" r="3"/><circle class="draw-dot" cx="125" cy="35" r="3"/><circle class="draw-dot" cx="125" cy="85" r="3"/><circle class="draw-dot" cx="40" cy="85" r="3"/></svg>
+        <span class="step-n">01</span>
+        <h3>Diseñamos contigo, desde el plano.</h3>
+        <p>Nos sentamos con tu arquitecto antes de colar la primera losa. Definimos dónde va cada sensor, motor y panel para que después nada se vea.</p>
+      </li>
+      <li class="step">
+        <svg class="step-art" viewBox="0 0 160 120" aria-hidden="true"><path class="draw" d="M20 110V10M140 110V10M20 30c40 0 40 30 60 30s30-20 50-20M110 30h20v20h-20z"/><path class="draw" d="M50 110V80h20v30"/></svg>
+        <span class="step-n">02</span>
+        <h3>Instalamos con cuidado de obra.</h3>
+        <p>Cableamos, instalamos y probamos todo con la limpieza de un acabado, no de una reparación. Coordinamos con tu residente para no frenar la obra.</p>
+      </li>
+      <li class="step">
+        <svg class="step-art" viewBox="0 0 160 120" aria-hidden="true"><rect class="draw" x="55" y="8" width="50" height="104" rx="9"/><path class="draw" d="M66 40h28M66 58h28M66 76h16"/><circle class="draw-dot" cx="90" cy="76" r="4"/></svg>
+        <span class="step-n">03</span>
+        <h3>Configuramos a tu medida.</h3>
+        <p>Tus horarios, tus escenas, la luz que te gusta para cenar. Probamos contigo cada rutina hasta que la casa se sienta tuya.</p>
+      </li>
+      <li class="step">
+        <svg class="step-art" viewBox="0 0 160 120" aria-hidden="true"><path class="draw" d="M58 110V60a22 22 0 0 1 44 0v50"/><circle class="draw-dot" cx="80" cy="92" r="4"/><path class="draw" d="M30 70a50 50 0 0 1 100 0M16 70a64 64 0 0 1 128 0"/></svg>
+        <span class="step-n">04</span>
+        <h3>Te acompañamos después.</h3>
+        <p>Soporte continuo, monitoreo y mejoras por actualización. Si algo falla, casi siempre lo sabemos antes que tú.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- 7 · Niveles -->
+<section class="tiers" id="niveles" aria-labelledby="tierTitle">
+  <div class="wrap">
+    <h2 class="h2" id="tierTitle">Tres niveles. Una misma forma de vivir.</h2>
+    <p class="lede">Cada casa es distinta, así que no hay precio de catálogo. Elige cómo quieres vivir y lo cotizamos con tu plano.</p>
+    <div class="tier-grid">
+      <article class="tier">
+        <svg class="tier-mark" viewBox="0 0 34 40" aria-hidden="true"><path class="arch" d="M5 38V17a12 12 0 0 1 24 0v21"/><circle cx="17" cy="29" r="3.6"/></svg>
+        <h3>Esencial</h3>
+        <p class="tier-lead">Lo importante, resuelto.</p>
+        <ul>
+          <li>Enciendes y apagas la casa desde el teléfono o con tu voz.</li>
+          <li>Abres el portón y la puerta sin buscar llaves.</li>
+          <li>Ves la entrada en vivo desde donde estés.</li>
+          <li>Escenas para llegar, salir y dormir.</li>
+        </ul>
+        <p class="tier-fit">Ideal para remodelaciones y casas ya construidas.</p>
+        <a class="btn btn-ghost" href="#visita" data-tier="Esencial">Cotizar Esencial</a>
+      </article>
+      <article class="tier">
+        <svg class="tier-mark" viewBox="0 0 34 40" aria-hidden="true"><path class="fill-half" d="M7.1 38V26h19.8v12z"/><path class="arch" d="M5 38V17a12 12 0 0 1 24 0v21"/><circle cx="17" cy="29" r="3.6"/></svg>
+        <h3>Confort</h3>
+        <p class="tier-lead">La casa que te conoce.</p>
+        <ul>
+          <li>Todo lo de Esencial.</li>
+          <li>Cortinas que se abren con el sol y se cierran con el calor.</li>
+          <li>Clima por zonas que se ajusta antes de que llegues.</li>
+          <li>Luz que cambia de tono durante el día.</li>
+          <li>Música en los espacios que tú elijas.</li>
+        </ul>
+        <p class="tier-fit">Ideal para casas en obra negra o gris.</p>
+        <a class="btn btn-ghost" href="#visita" data-tier="Confort">Cotizar Confort</a>
+      </article>
+      <article class="tier tier-full">
+        <svg class="tier-mark" viewBox="0 0 34 40" aria-hidden="true"><path class="fill-full" d="M7.1 38V17a9.9 9.9 0 0 1 19.8 0v21z"/><path class="arch" d="M5 38V17a12 12 0 0 1 24 0v21"/><circle cx="17" cy="29" r="3.6"/></svg>
+        <h3>Integral</h3>
+        <p class="tier-lead">Todo el hogar, pensado desde el plano.</p>
+        <ul>
+          <li>Todo lo de Confort.</li>
+          <li>Energía solar que la casa aprovecha hora por hora.</li>
+          <li>Seguridad perimetral y cámaras en toda la casa.</li>
+          <li>Electrodomésticos, riego y alberca en la misma app.</li>
+          <li>Diseño integrado con tu arquitecto y soporte prioritario.</li>
+        </ul>
+        <p class="tier-fit">Ideal para casas en diseño o por construir.</p>
+        <a class="btn" href="#visita" data-tier="Integral">Cotizar Integral</a>
+      </article>
+    </div>
+    <p class="tier-note">Todos los niveles incluyen la app NIDEA, instalación profesional y soporte continuo. Puedes empezar en un nivel y crecer después.</p>
+  </div>
+</section>
+
+<!-- 8 · Arquitectos -->
+<section class="arch-section" id="arquitectos" aria-labelledby="archTitle">
+  <div class="wrap arch-grid">
+    <div class="arch-copy">
+      <h2 class="h2" id="archTitle">Para quien diseña y construye.</h2>
+      <p class="lede">Arquitectos y desarrolladores: la tecnología se resuelve en el plano, no en la obra. Tu diseño no debería cargar con apagadores de más, sensores a la vista ni ranuras abiertas después de entregar. Entramos al proyecto como un consultor más.</p>
+      <dl class="arch-list">
+        <div><dt>Planos de preinstalación</dt><dd>Canalizaciones, registros, tableros y ubicación de sensores, listos para integrarse a tu juego de planos.</dd></div>
+        <div><dt>Coordinación en obra</dt><dd>Trabajamos con tu residente y tus instaladores para que todo quede a tiempo y en su lugar.</dd></div>
+        <div><dt>Acabados que respetan tu diseño</dt><dd>Especificamos apagadores, rieles, cerraduras y equipos que desaparecen en tu arquitectura.</dd></div>
+        <div><dt>Para desarrolladores</dt><dd>Paquetes por prototipo, material para tu equipo de ventas y postventa operada por nosotros.</dd></div>
+      </dl>
+      <a class="btn btn-light" href="#visita" data-tier="Arquitecto o desarrollador">Hablemos de tu proyecto</a>
+    </div>
+    <figure class="plan-card">
+      <div class="plan-layers" role="group" aria-label="Capas del plano">
+        <button aria-pressed="true" data-layer="light"><i></i>Iluminación</button>
+        <button aria-pressed="true" data-layer="access"><i></i>Accesos</button>
+        <button aria-pressed="true" data-layer="energy"><i></i>Energía</button>
+      </div>
+      <svg class="plan" viewBox="0 0 560 420" aria-label="Plano arquitectónico con capas de iluminación, accesos y energía">
+        <g class="plan-base">
+          <path class="p-wall" d="M30 30h500v360H30zM230 30v110M230 200v190M380 30v160M380 250v140M30 220h120M190 220h40M380 190h150"/>
+          <path class="p-thin" d="M230 140a60 60 0 0 1 60 60M380 190a60 60 0 0 1 60 60M150 220a40 40 0 0 1 40 -40"/>
+          <path class="p-thin" d="M60 60h140v130H60z" stroke-dasharray="3 5"/>
+          <g class="p-label"><text x="44" y="206">Sala</text><text x="246" y="376">Cocina y comedor</text><text x="394" y="176">Recámara</text><text x="44" y="376">Estudio</text><text x="394" y="376">Cochera</text></g>
+        </g>
+        <g class="layer layer-light">
+          <circle cx="130" cy="120" r="5"/><circle cx="130" cy="120" r="26" class="halo"/>
+          <circle cx="300" cy="90" r="5"/><circle cx="300" cy="90" r="22" class="halo"/>
+          <circle cx="300" cy="290" r="5"/><circle cx="300" cy="290" r="26" class="halo"/>
+          <circle cx="455" cy="100" r="5"/><circle cx="455" cy="100" r="22" class="halo"/>
+          <circle cx="120" cy="300" r="5"/><circle cx="120" cy="300" r="22" class="halo"/>
+          <path d="M40 60v110" class="strip"/><path d="M520 40v130" class="strip"/>
+        </g>
+        <g class="layer layer-access">
+          <rect x="222" y="376" width="16" height="16" rx="3"/><rect x="455" y="382" width="50" height="8" rx="2"/>
+          <path d="M40 44l14 8-14 8z"/><path d="M520 380l-14-8 14-8z"/><path d="M520 44l-14 8 14 8z"/>
+          <path d="M60 30v-10M200 30v-10" class="curtain-rail"/><path d="M60 22h140" class="curtain-rail"/>
+        </g>
+        <g class="layer layer-energy">
+          <path d="M430 250h80v60h-80z" class="panel"/><path d="M470 250v-20H380" class="wire"/><path d="M380 230H240v-40" class="wire"/>
+          <text x="436" y="284">Inversor y</text><text x="436" y="298">tablero</text>
+        </g>
+      </svg>
+      <figcaption>Así se ve NIDEA en tu plano: cada punto tiene lugar antes de que exista el muro.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- 9 · Confianza -->
+<section class="trust" id="confianza" aria-labelledby="trustTitle">
+  <div class="wrap">
+    <h2 class="h2" id="trustTitle">Por qué confiar en NIDEA.</h2>
+    <div class="trust-grid">
+      <div class="trust-pillars">
+        <div class="pillar">
+          <h3>Arquitectura</h3>
+          <p>Hablamos el idioma de la obra. Leemos planos, respetamos tu diseño y sabemos cuándo entrar para no estorbar.</p>
+        </div>
+        <div class="pillar">
+          <h3>Energía solar</h3>
+          <p>Dimensionamos, instalamos e interconectamos con CFE. La energía no es un extra: es parte del sistema.</p>
+        </div>
+        <div class="pillar">
+          <h3>Software propio</h3>
+          <p>La app y la plataforma son nuestras. Las mejoramos cada mes y tu casa las recibe sola.</p>
+        </div>
+        <div class="pillar">
+          <h3>Equipo profesional</h3>
+          <p>Trabajamos solo con equipo de grado profesional, cableado y con respaldo del fabricante. Nada de aparatos de ocasión que dejan de funcionar al año.</p>
+        </div>
+      </div>
+      <figure class="map">
+        <svg viewBox="0 0 680 500" aria-label="Mapa del Bajío con León, San Miguel de Allende y Querétaro">
+          <g class="topo">
+            <path d="M-20 120c120-40 220 30 340 10s200-80 380-40"/>
+            <path d="M-20 200c140-30 240 40 360 20s220-70 360-30"/>
+            <path d="M-20 290c120-20 220 40 350 26s230-60 370-20"/>
+            <path d="M-20 380c130-30 230 30 360 20s230-50 360-10"/>
+            <path d="M-20 460c140-20 250 20 380 10s220-40 340-10"/>
+          </g>
+          <path class="route" d="M216 264 342 294 498 327 603 423"/>
+          <g class="city-minor"><circle cx="342" cy="294" r="3.5"/><circle cx="315" cy="399" r="3.5"/><circle cx="477" cy="444" r="3.5"/><circle cx="60" cy="60" r="3.5"/>
+            <text x="352" y="287">Guanajuato</text><text x="325" y="392">Irapuato</text><text x="487" y="462">Celaya</text><text x="70" y="53">Aguascalientes</text></g>
+          <g class="city"><circle cx="216" cy="264" r="7"/><circle class="ring" cx="216" cy="264" r="18"/><text x="138" y="246">León</text><text class="sub" x="100" y="300">Showroom</text></g>
+          <g class="city"><circle cx="498" cy="327" r="7"/><text x="510" y="315">San Miguel</text><text x="510" y="338">de Allende</text></g>
+          <g class="city"><circle cx="603" cy="423" r="7"/><text x="552" y="400">Querétaro</text></g>
+        </svg>
+        <figcaption>Somos del Bajío y trabajamos aquí: cerca de la obra mientras se construye y cerca de ti cuando algo se necesita.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- 10 · Cierre -->
+<section class="visit" id="visita" aria-labelledby="visitTitle">
+  <div class="wrap visit-grid">
+    <div class="visit-copy">
+      <h2 class="h2 visit-title" id="visitTitle">Una casa así se entiende mejor en persona.</h2>
+      <p class="lede">Ven al showroom a vivirla un rato, o agenda una llamada de diseño con tu plano en la mesa. Sin compromiso y sin tecnicismos.</p>
+      <ul class="visit-points">
+        <li>Te respondemos en menos de un día hábil.</li>
+        <li>Si ya tienes plano, tráelo o compártelo en la llamada.</li>
+        <li>Arquitectos y desarrolladores: con gusto vamos a tu despacho.</li>
+      </ul>
+    </div>
+    <form class="visit-form" id="visitForm" novalidate>
+      <fieldset class="seg seg-wide">
+        <legend class="sr-only">¿Qué prefieres?</legend>
+        <label><input type="radio" name="tipo" value="showroom" checked><span>Visita al showroom</span></label>
+        <label><input type="radio" name="tipo" value="llamada"><span>Llamada de diseño</span></label>
+      </fieldset>
+      <div class="field">
+        <label for="fNombre">Nombre</label>
+        <input id="fNombre" name="nombre" autocomplete="name" required>
+        <small class="err" data-for="fNombre">Escribe tu nombre para saber a quién buscar.</small>
+      </div>
+      <div class="field">
+        <label for="fTel">WhatsApp o teléfono</label>
+        <input id="fTel" name="telefono" type="tel" inputmode="tel" autocomplete="tel" required placeholder="477 000 0000">
+        <small class="err" data-for="fTel">Escribe un número de 10 dígitos para confirmar tu cita.</small>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="fCiudad">Ciudad</label>
+          <select id="fCiudad" name="ciudad">
+            <option>León</option><option>Querétaro</option><option>San Miguel de Allende</option><option>Guanajuato</option><option>Irapuato</option><option>Celaya</option><option>Aguascalientes</option><option>Otra</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="fEtapa">Tu proyecto está en</label>
+          <select id="fEtapa" name="etapa">
+            <option>Diseño o planos</option><option>Obra en proceso</option><option>Remodelación</option><option>Casa terminada</option><option>Soy arquitecto o desarrollador</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label for="fNota">Cuéntanos algo de tu casa <span class="opt">(opcional)</span></label>
+        <textarea id="fNota" name="nota" rows="3" placeholder="Por ejemplo: 350 m², dos niveles, queremos paneles solares."></textarea>
+      </div>
+      <button class="btn btn-block" type="submit" id="fSubmit">Agendar mi visita</button>
+      <p class="form-fine">Usamos tus datos solo para contactarte sobre tu proyecto.</p>
+      <div class="form-done" id="formDone" hidden tabindex="-1">
+        <svg viewBox="0 0 34 40" aria-hidden="true"><path d="M5 38V17a12 12 0 0 1 24 0v21"/><circle cx="17" cy="29" r="3.6"/></svg>
+        <h3 id="doneTitle">Gracias. Ya tenemos tu solicitud.</h3>
+        <p id="doneText">Te escribimos por WhatsApp en menos de un día hábil para confirmar la fecha.</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-grid">
+    <div class="foot-brand">
+      <img src="assets/nidea-logo.svg" alt="NIDEA" width="172" height="40">
+      <p>Casas inteligentes, diseñadas desde el plano y alimentadas por el sol.</p>
+    </div>
+    <div>
+      <h4>Showroom</h4>
+      <p>León, Guanajuato<br>Con cita, de lunes a sábado</p>
+    </div>
+    <div>
+      <h4>Contacto</h4>
+      <p>hola@nidea.mx<br>477 000 0000</p>
+    </div>
+    <div>
+      <h4>Atendemos</h4>
+      <p>León, Querétaro, San Miguel de Allende, Guanajuato, Irapuato, Celaya y Aguascalientes</p>
+    </div>
+  </div>
+  <div class="wrap foot-base"><span>© 2026 NIDEA</span><span>Hecho en el Bajío</span></div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
