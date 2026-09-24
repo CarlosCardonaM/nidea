@@ -56,6 +56,11 @@
 .cfg-visual .pulse { fill: none; stroke: #F4D3A0; stroke-width: 1.5; transform-box: fill-box; transform-origin: center; animation: cfgPulse 2.2s ease-out infinite; }
 /* Electrodomésticos */
 .cfg-visual[data-electro] .m-electro { opacity: 1; }
+/* Riego y alberca */
+.cfg-visual[data-riego] .m-riego, .cfg-visual[data-alberca] .m-alberca { opacity: 1; }
+.cfg-visual .m-riego .spray { animation: flow 1s linear infinite; }
+.cfg-visual .m-alberca .pool-wave { animation: cfgDrift 3s ease-in-out infinite; }
+.cfg-visual .m-alberca .pool-light { animation: cfgWave 3.4s ease-in-out infinite; }
 /* Solar */
 .cfg-visual[data-solar] .m-solar-panels { opacity: 1; }
 .cfg-visual[data-solar="gestion"] .m-solar-flow { opacity: 1; }
@@ -215,6 +220,21 @@
 .vg-electro .drum { transform-box: fill-box; transform-origin: center; }
 .mod.is-on .vg-electro .drum { animation: cfgSpin 2.4s linear infinite; }
 @keyframes cfgSpin { to { transform: rotate(360deg); } }
+/* riego */
+.vg-riego .plant path { fill: none; stroke: #7F8A68; stroke-width: 1.6; stroke-linecap: round; }
+.vg-riego .head { fill: var(--nogal); }
+.vg-riego .spray path { fill: none; stroke: #7FB6C9; stroke-width: 2; stroke-linecap: round; stroke-dasharray: 2 5; }
+.mod.is-on .vg-riego .spray path { animation: flow 1s linear infinite; }
+/* alberca */
+.vg-alberca .pool { fill: #D6E3E4; transition: fill .6s; }
+.mod.is-on .vg-alberca .pool { fill: #9FCFDB; }
+.vg-alberca .wave { stroke: #7FB6C9; }
+.mod.is-on .vg-alberca .wave { animation: cfgDrift 2.6s ease-in-out infinite; }
+.vg-alberca .uw { fill: #E8F7FA; }
+.mod.is-on .vg-alberca .uw { opacity: .8; }
+.vg-alberca .sunb { fill: #F4C47E; }
+.vg-alberca .pipe { fill: none; stroke: var(--luz); stroke-width: 2.4; stroke-dasharray: 3 4; }
+.mod.is-on .vg-alberca .pipe { animation: flow 1s linear infinite; }
 /* control */
 .vg-app .arch { fill: none; stroke: var(--nogal); stroke-width: 3; }
 .vg-app .dotl { fill: var(--luz); }

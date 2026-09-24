@@ -50,7 +50,11 @@
     { id: 'audio', short: 'Música en los espacios que elijas.', name: 'Audio', icon: 'i-speaker', desc: 'Música en los espacios que elijas, desde la app o la pared.', retro: 'Bocinas inalámbricas o empotradas, según el espacio.',
       level: 'integral', at: [598, 536], chip: 'Música en la sala' },
     { id: 'electro', short: 'Lavadora y calentador trabajan con sol.', name: 'Electrodomésticos', icon: 'i-fridge', desc: 'Lavadora y calentador trabajan cuando hay sol, no cuando cuesta más.', retro: 'Con equipos compatibles.',
-      level: 'integral', at: [809, 512], chip: 'Lavadora con sol' }
+      level: 'integral', at: [809, 512], chip: 'Lavadora con sol' },
+    { id: 'riego', short: 'Riega solo, y se lo salta si va a llover.', name: 'Sistema de riego', icon: 'i-drop', desc: 'Riega a la hora correcta, por zonas, y no riega si el pronóstico dice lluvia.', retro: 'Se conecta a las válvulas de riego que ya tienes.',
+      level: 'integral', at: [760, 596], chip: 'Riego del jardín' },
+    { id: 'alberca', short: 'Filtra con sol; luz y temperatura desde la app.', name: 'Alberca', icon: 'i-drop', desc: 'La bomba y el filtro trabajan con energía del sol, y controlas luz y temperatura desde la app.', retro: 'Se conecta a la bomba y al equipo de tu alberca actual.',
+      level: 'integral', at: [540, 664], chip: 'Alberca filtrando con sol' }
   ];
 
   /* ---------- Viñetas de cada módulo (viewBox 160×100). Clases: .ln trazo, .on visible al activarse ---------- */
@@ -64,6 +68,8 @@
     sensores: `<rect class="ln" x="36" y="14" width="64" height="74"/><path class="ln" d="M68 14v74M36 51h64"/><rect class="dev" x="100" y="40" width="7" height="18" rx="2"/><circle class="rip" cx="103.5" cy="49" r="4"/><circle class="rip r2" cx="103.5" cy="49" r="4"/><circle class="dotl" cx="103.5" cy="44" r="1.6"/><path class="ln faint" d="M12 92h136"/>`,
     solar: `<circle class="sunb" cx="128" cy="44" r="10"/><path class="on ln sun-r" d="M128 29v-3M128 62v-3M113 44h-3M146 44h-3M118 34l-2-2M138 34l2-2"/><rect class="ln" x="30" y="50" width="76" height="42"/><path class="panel" d="M34 50l6-12h22l-6 12zM62 50l6-12h22l-6 12z"/><path class="on flow" d="M62 50v18h8"/><rect class="ln" x="70" y="62" width="22" height="30"/><path class="on glint" d="M34 50l6-12h22l-6 12zM62 50l6-12h22l-6 12z"/><path class="ln faint" d="M8 92h144"/>`,
     audio: `<rect class="ln" x="56" y="22" width="30" height="64" rx="4"/><circle class="ln" cx="71" cy="64" r="11"/><circle class="ln" cx="71" cy="64" r="3"/><circle class="ln" cx="71" cy="38" r="5"/><g class="wv"><path class="ln w1" d="M96 46a14 14 0 0 1 0 22"/><path class="ln w2" d="M104 38a26 26 0 0 1 0 38"/><path class="ln w3" d="M112 30a38 38 0 0 1 0 54"/></g>`,
+    riego: `<g class="on spray"><path d="M80 68c-14-26-40-32-60-10"/><path d="M80 68c14-26 40-32 60-10"/><path d="M80 68c-8-34-26-44-42-34"/><path d="M80 68c8-34 26-44 42-34"/></g><g class="plant"><path d="M22 92c2-9 5-14 10-18M28 92c0-9 2-14 0-20M34 92c-1-7 0-11 4-15"/><path d="M122 92c2-9 5-14 10-18M128 92c0-9 2-14 0-20M134 92c-1-7 0-11 4-15"/></g><rect class="ln" x="76" y="72" width="8" height="20" rx="1.5"/><path class="ln" d="M73 72h14"/><circle class="head" cx="80" cy="68" r="3"/><path class="ln faint" d="M8 92h144"/>`,
+    alberca: `<g class="on"><circle class="sunb" cx="128" cy="40" r="8"/><path class="ln" d="M128 28v-3M128 55v-3M116 40h-3M143 40h-3"/></g><rect class="pool" x="20" y="60" width="96" height="30"/><path class="ln wave" d="M20 62c8-3 16 3 24 0s16-3 24 0 16 3 24 0 16-3 24 0"/><ellipse class="on uw" cx="68" cy="80" rx="26" ry="7"/><path class="ln" d="M12 56h112M20 56v34h96V56"/><path class="ln" d="M102 44v22M110 44v22M102 52h8M102 60h8"/><rect class="ln" x="130" y="68" width="16" height="22" rx="2"/><path class="on pipe" d="M130 78h-14"/><path class="ln faint" d="M6 92h148"/>`,
     electro: `<rect class="ln" x="54" y="16" width="52" height="76" rx="4"/><path class="ln" d="M54 30h52"/><circle class="ln" cx="64" cy="23" r="2"/><circle class="ln" cx="72" cy="23" r="2"/><circle class="ln" cx="80" cy="60" r="18"/><g class="drum"><circle class="water" cx="80" cy="60" r="13"/><path class="ln" d="M72 58c4-5 12-5 16 0"/></g><g class="on"><circle class="sunb" cx="128" cy="50" r="7"/><path class="ln" d="M128 38v-3M128 65v-3M116 50h-3M143 50h-3"/></g><path class="ln faint" d="M12 92h136"/>`
   };
   const ETAPAS = { diseno: 'En diseño o por construir', obra: 'En obra', construida: 'Ya construida' };
@@ -177,7 +183,7 @@
   const meter = $$('.cfg-meter span');
   const HINTS = {
     esencial: 'Para llegar a Confort: agrega cortinas, clima, sensores o ver tu energía solar.',
-    confort: 'Para llegar a Integral: luz o cámaras en toda la casa, que la casa administre tu energía solar, audio o electrodomésticos.',
+    confort: 'Para llegar a Integral: luz o cámaras en toda la casa, que la casa administre tu energía solar, audio, electrodomésticos, riego o alberca.',
     integral: 'Es el nivel más completo: toda la casa trabaja en conjunto, y con el sol.'
   };
   const MARK_FILL = { esencial: '', confort: 'M7.1 38V26h19.8v12z', integral: 'M7.1 38V17a9.9 9.9 0 0 1 19.8 0v21z' };
