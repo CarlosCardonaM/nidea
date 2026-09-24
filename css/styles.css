@@ -628,6 +628,8 @@ h3 { font-family: var(--sans); font-weight: 400; font-size: 1.35rem; line-height
 .tier-full .btn { background: var(--cal); color: var(--nogal); border-color: var(--cal); }
 .tier-full .btn:hover { background: #fff; }
 .tier-note { margin-top: 28px; font-size: 1rem; color: var(--nogal-2); max-width: 44rem; }
+.tier-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; margin-top: 28px; }
+.tier-cta span { font-size: 1rem; color: var(--nogal-2); max-width: 36ch; }
 @media (max-width: 960px) { .tier-grid { grid-template-columns: 1fr; max-width: 560px; } }
 
 /* ==========================================================

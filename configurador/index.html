@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Arma tu casa · NIDEA</title>
+<meta name="description" content="Elige lo que quieres que tu casa haga por ti: luz, cortinas, portón, cámaras, clima y energía solar. Te decimos qué nivel NIDEA se parece más a tu forma de vivir.">
+<meta name="theme-color" content="#F7F6F3">
+<link rel="canonical" href="https://nidea-eta.vercel.app/configurador/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="NIDEA">
+<meta property="og:locale" content="es_MX">
+<meta property="og:url" content="https://nidea-eta.vercel.app/configurador/">
+<meta property="og:title" content="Arma tu casa · NIDEA">
+<meta property="og:description" content="Elige lo que quieres que tu casa haga por ti y te decimos qué nivel NIDEA es para ti.">
+<meta property="og:image" content="https://nidea-eta.vercel.app/assets/og.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://nidea-eta.vercel.app/assets/og.jpg">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/styles.css">
+<link rel="stylesheet" href="/css/configurador.css">
+</head>
+<body class="cfg-page">
+
+<svg class="sprite" aria-hidden="true">
+  <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2V16h5v-.1c0-.8.4-1.5 1-2A6 6 0 0 0 12 3z"/></symbol>
+  <symbol id="i-cam" viewBox="0 0 24 24"><rect x="3" y="7" width="13" height="10" rx="2"/><path d="M16 11l5-3v8l-5-3"/></symbol>
+  <symbol id="i-gate" viewBox="0 0 24 24"><path d="M3 20V5M21 20V5M3 8h18M7.5 8v12M12 8v12M16.5 8v12"/></symbol>
+  <symbol id="i-temp" viewBox="0 0 24 24"><path d="M10 14V5a2 2 0 1 1 4 0v9a4 4 0 1 1-4 0z"/></symbol>
+  <symbol id="i-curtain" viewBox="0 0 24 24"><path d="M3 4h18M5 4v16c2 0 3.5-6 4.5-16M19 4v16c-2 0-3.5-6-4.5-16"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></symbol>
+  <symbol id="i-speaker" viewBox="0 0 24 24"><rect x="6" y="3" width="12" height="18" rx="2"/><circle cx="12" cy="14" r="3"/><circle cx="12" cy="7.5" r=".8"/></symbol>
+  <symbol id="i-sensor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="2.5"/><path d="M7.8 7.8a6 6 0 0 0 0 8.4M16.2 7.8a6 6 0 0 1 0 8.4M5 5a10 10 0 0 0 0 14M19 5a10 10 0 0 1 0 14"/></symbol>
+  <symbol id="i-fridge" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><circle cx="12" cy="13" r="4"/><path d="M8 6h2"/></symbol>
+  <symbol id="i-wifi" viewBox="0 0 24 24"><path d="M2.5 9a14 14 0 0 1 19 0M5.5 12.5a9.5 9.5 0 0 1 13 0M8.5 16a5 5 0 0 1 7 0"/><circle cx="12" cy="19" r=".9"/></symbol>
+  <symbol id="i-app" viewBox="0 0 24 24"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M10.5 18.5h3"/></symbol>
+  <symbol id="i-support" viewBox="0 0 24 24"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="14" width="4" height="6" rx="1.5"/><rect x="17" y="14" width="4" height="6" rx="1.5"/><path d="M19 20c0 1-2 2-5 2"/></symbol>
+  <symbol id="i-keypad" viewBox="0 0 24 24"><rect x="6" y="3" width="12" height="18" rx="2"/><path d="M9.5 8h5M9.5 12h5M9.5 16h5"/></symbol>
+  <symbol id="i-voice" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21"/></symbol>
+  <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></symbol>
+</svg>
+
+<a class="skip" href="#armar">Saltar al configurador</a>
+
+<header class="nav is-scrolled" id="nav">
+  <div class="nav-inner">
+    <a class="brand" href="/" aria-label="NIDEA, inicio">
+      <svg class="brand-mark" viewBox="0 0 34 40" aria-hidden="true"><path d="M5 38V17a12 12 0 0 1 24 0v21"/><circle cx="17" cy="29" r="3.6"/></svg>
+      <svg class="brand-word" viewBox="0 0 97 21" aria-hidden="true"><g><path d="M1.1 20V1.5L14.9 18.5V0" stroke-linejoin="bevel"/><path d="M26 0v20"/><path d="M37.1 1.1v17.8h4.4a8.9 8.9 0 0 0 0-17.8z"/><path d="M71 1.1H60.1v17.8H71M60.1 10h9.4"/><path d="M79 20.4 87.5.4l8.5 20M82 13.4h11"/></g></svg>
+    </a>
+    <nav class="nav-links" id="navLinks" aria-label="Principal">
+      <a href="/#un-dia">Un día en casa</a>
+      <a href="/#app">La app</a>
+      <a href="/#energia">Energía</a>
+      <a href="/#niveles">Niveles</a>
+      <a href="/configurador/" aria-current="page">Arma tu casa</a>
+      <a class="nav-cta-mobile" href="#cotizar">Cotizar mi casa</a>
+    </nav>
+    <a class="btn btn-small nav-cta" href="#cotizar">Cotizar mi casa</a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Abrir menú"><span></span><span></span></button>
+  </div>
+</header>
+
+<main id="armar" class="cfg">
+  <section class="cfg-intro wrap">
+    <h1 class="h2">Arma tu casa.</h1>
+    <p class="lede">Elige lo que quieres que tu casa haga por ti y mira cómo responde. Al final te decimos qué nivel se parece más a tu forma de vivir, y lo cotizamos con tu plano.</p>
+  </section>
+
+  <div class="cfg-grid wrap">
+    <!-- Escena -->
+    <div class="cfg-stage">
+      <div class="cfg-visual" id="cfgVisual">
+        <svg viewBox="340 222 820 492" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Ilustración de una casa que cambia según lo que eliges">
+          <defs>
+            <linearGradient id="cSky" gradientUnits="userSpaceOnUse" x1="0" y1="-200" x2="0" y2="620">
+              <stop offset="0" stop-color="#5E6886"/><stop offset=".7" stop-color="#B98C88"/><stop offset="1" stop-color="#E2A987"/>
+            </linearGradient>
+            <radialGradient id="cGlow"><stop offset="0" stop-color="#FFD9A0" stop-opacity=".9"/><stop offset=".4" stop-color="#F7C27A" stop-opacity=".3"/><stop offset="1" stop-color="#F7C27A" stop-opacity="0"/></radialGradient>
+            <radialGradient id="cSun"><stop offset="0" stop-color="#FBD49A" stop-opacity=".9"/><stop offset=".3" stop-color="#F2B06E" stop-opacity=".35"/><stop offset="1" stop-color="#F2B06E" stop-opacity="0"/></radialGradient>
+            <pattern id="cPleat" width="10" height="10" patternUnits="userSpaceOnUse"><rect width="1.4" height="10" fill="#000" opacity=".08"/><rect x="5" width="1" height="10" fill="#fff" opacity=".2"/></pattern>
+            <clipPath id="cGateClip"><rect x="955" y="490" width="130" height="110"/></clipPath>
+            <clipPath id="cLand">
+              <path d="M-900 470C-700 440-500 452-300 440S0 420 120 438s200 12 300-6 240 4 340-12 240 14 360 6 300 10 700 4V900H-900z"/>
+              <rect x="388" y="262" width="304" height="340"/><rect x="672" y="408" width="272" height="194"/><rect x="932" y="450" width="176" height="152"/><ellipse cx="1150" cy="440" rx="110" ry="80"/>
+            </clipPath>
+          </defs>
+
+          <rect x="0" y="-300" width="1600" height="1100" fill="url(#cSky)"/>
+          <circle cx="1165" cy="468" r="120" fill="url(#cSun)"/>
+          <circle cx="1165" cy="468" r="24" fill="#F3B57A"/>
+          <path d="M-900 470C-700 440-500 452-300 440S0 420 120 438s200 12 300-6 240 4 340-12 240 14 360 6 300 10 700 4V900H-900z" fill="#B39A8F"/>
+          <path d="M-900 530c200-24 400-10 560-22S20 492 160 512s240-18 380-10 260 18 400 4 260-6 440 2 400 12 520 6V900H-900z" fill="#9C877D"/>
+          <rect x="0" y="598" width="1600" height="300" fill="#D5CABB"/>
+          <rect x="0" y="648" width="1600" height="4" fill="#C3B7A7"/>
+          <path d="M940 600h160l70 52H880z" fill="#DDD3C5"/>
+
+          <rect x="280" y="548" width="120" height="52" fill="#BFB2A2"/>
+          <path d="M280 566h34M322 566h40M370 566h30M296 548v18M344 548v18M388 548v18M280 584h22M310 584h48M366 584h34M302 566v18M358 566v18M326 584v16M380 584v16" stroke="#A89A89" stroke-width="1.4" fill="none"/>
+          <g fill="#8C9477"><path d="M318 600c-14-8-26-24-30-40 12 10 22 22 30 40zm4 0c-2-16 0-34 6-48 4 16 2 34-6 48zm4 0c8-14 20-26 34-32-8 14-18 26-34 32z"/><path d="M372 600c-10-6-18-18-20-28 8 6 16 16 20 28zm3 0c-1-12 1-24 5-34 3 11 1 24-5 34zm3 0c6-10 14-18 24-22-6 10-13 18-24 22z"/></g>
+
+          <rect x="400" y="300" width="280" height="300" fill="#DCD7CE"/>
+          <rect x="388" y="288" width="304" height="14" fill="#CEC8BE"/>
+          <g class="m-solar-panels">
+            <g fill="#3F4652" stroke="#5E6672" stroke-width=".8"><path d="M412 288h58l-6-24h-46z"/><path d="M478 288h58l-6-24h-46z"/><path d="M544 288h58l-6-24h-46z"/><path d="M610 288h58l-6-24h-46z"/></g>
+            <path d="M431 288l-2-24M451 288l2-24M497 288l-2-24M517 288l2-24M563 288l-2-24M583 288l2-24M629 288l-2-24M649 288l2-24M414 276h54M480 276h54M546 276h54M612 276h54" stroke="#56606C" stroke-width=".6"/>
+            <g fill="#F2C57E" opacity=".25"><path d="M412 288h58l-6-24h-46z"/><path d="M478 288h58l-6-24h-46z"/><path d="M544 288h58l-6-24h-46z"/><path d="M610 288h58l-6-24h-46z"/></g>
+          </g>
+          <rect x="400" y="430" width="280" height="40" fill="#D4CEC4"/>
+          <rect x="680" y="420" width="250" height="180" fill="#E5E1D9"/>
+          <rect x="672" y="408" width="272" height="14" fill="#CEC8BE"/>
+          <rect x="858" y="422" width="72" height="178" fill="#A0714E"/>
+          <path d="M866 422v178M874 422v178M882 422v178M890 422v178M898 422v178M906 422v178M914 422v178M922 422v178" stroke="#8C5F3F" stroke-width="1"/>
+          <rect x="940" y="462" width="160" height="138" fill="#D8D3C9"/>
+          <rect x="932" y="450" width="176" height="14" fill="#CEC8BE"/>
+          <g>
+            <path d="M1150 600c2-40-6-70-4-96 2-14 10-22 18-34M1147 540c-10-14-24-22-38-26M1152 520c12-10 26-14 40-14" stroke="#6E5A48" stroke-width="7" fill="none" stroke-linecap="round"/>
+            <ellipse cx="1150" cy="450" rx="92" ry="44" fill="#7F8A68"/><ellipse cx="1100" cy="470" rx="54" ry="28" fill="#8D9776"/><ellipse cx="1196" cy="466" rx="50" ry="26" fill="#737E5E"/><ellipse cx="1160" cy="424" rx="60" ry="26" fill="#96A080"/>
+          </g>
+          <g fill="#2A2420" opacity=".07"><rect x="400" y="302" width="280" height="6"/><rect x="680" y="422" width="250" height="6"/><rect x="940" y="464" width="160" height="5"/></g>
+
+          <!-- Tinte de atardecer sobre tierra y casa -->
+          <rect x="-900" y="-800" width="3000" height="1700" fill="#6E4F62" opacity=".2" clip-path="url(#cLand)"/>
+
+          <!-- Ventanas -->
+          <rect class="win win-bed" x="428" y="334" width="224" height="96"/>
+          <g class="m-cortinas"><rect class="cur" x="428" y="334" width="62" height="96"/><rect x="428" y="334" width="62" height="96" fill="url(#cPleat)"/><rect class="cur" x="590" y="334" width="62" height="96"/><rect x="590" y="334" width="62" height="96" fill="url(#cPleat)"/></g>
+          <g fill="#9A6B4A"><rect x="598" y="334" width="4" height="96"/><rect x="607" y="334" width="4" height="96"/><rect x="616" y="334" width="4" height="96"/><rect x="625" y="334" width="4" height="96"/><rect x="634" y="334" width="4" height="96"/><rect x="643" y="334" width="4" height="96"/></g>
+          <rect x="428" y="334" width="224" height="96" fill="none" stroke="#B3ABA0" stroke-width="3"/>
+
+          <rect class="win win-liv" x="420" y="470" width="240" height="130"/>
+          <g class="sil"><rect x="444" y="566" width="124" height="34" rx="6"/><rect x="444" y="552" width="124" height="20" rx="6"/><rect x="624" y="578" width="18" height="22" rx="2"/><path d="M633 580c-10-12-16-30-12-44 6 12 10 26 12 44zm0 0c4-16 12-30 22-38-4 14-10 28-22 38z"/><path d="M526 518h20l-4-10h-12z"/><rect x="535.2" y="470" width="1.6" height="40"/></g>
+          <g class="m-clima"><path d="M452 500c14-6 26 6 40 0s26-6 40 0M452 516c14-6 26 6 40 0s26-6 40 0" fill="none" stroke="#CFE3EA" stroke-width="2.2" stroke-linecap="round"/><rect x="606" y="506" width="16" height="22" rx="3" fill="#3A3632"/><rect x="609" y="510" width="10" height="7" rx="1" fill="#9FD0DF"/></g>
+          <g class="m-audio" fill="none" stroke="#F7E3C0" stroke-width="2" stroke-linecap="round"><path class="w1" d="M596 548a10 10 0 0 1 0 14"/><path class="w2" d="M602 542a18 18 0 0 1 0 26"/><path class="w3" d="M608 536a26 26 0 0 1 0 38"/><rect x="584" y="546" width="8" height="18" rx="2" fill="#3A3632" stroke="none"/></g>
+          <g class="m-cortinas"><rect class="cur" x="420" y="470" width="56" height="130"/><rect x="420" y="470" width="56" height="130" fill="url(#cPleat)"/><rect class="cur" x="604" y="470" width="56" height="130"/><rect x="604" y="470" width="56" height="130" fill="url(#cPleat)"/></g>
+          <path d="M500 470v130M580 470v130" stroke="#B3ABA0" stroke-width="2"/>
+          <rect x="420" y="470" width="240" height="130" fill="none" stroke="#B3ABA0" stroke-width="3"/>
+
+          <rect class="win win-kit" x="700" y="452" width="145" height="114"/>
+          <g class="m-electro"><rect x="788" y="516" width="42" height="50" rx="3" fill="#E9E4DC"/><circle cx="809" cy="543" r="12" fill="#9DB0B6" stroke="#CFC8BD" stroke-width="3"/><rect x="794" y="521" width="12" height="3" rx="1" fill="#B8AFA3"/></g>
+          <g class="m-cortinas"><rect class="cur" x="700" y="452" width="36" height="114"/><rect x="700" y="452" width="36" height="114" fill="url(#cPleat)"/><rect class="cur" x="809" y="452" width="36" height="114"/><rect x="809" y="452" width="36" height="114" fill="url(#cPleat)"/></g>
+          <rect x="700" y="452" width="145" height="114" fill="none" stroke="#B3ABA0" stroke-width="3"/>
+
+          <rect x="876" y="480" width="40" height="120" fill="#7E5536"/>
+          <path d="M908 528v26" stroke="#D9C9A8" stroke-width="2.5" stroke-linecap="round"/>
+          <rect x="864" y="530" width="7" height="16" rx="1.5" fill="#3A332E"/>
+          <circle class="lock-led" cx="867.5" cy="535" r="2"/>
+          <circle class="m-cerradura" cx="867.5" cy="538" r="16" fill="url(#cGlow)"/>
+
+          <rect class="garage-in" x="955" y="490" width="130" height="110"/>
+          <rect class="m-porton garage-lamp" x="1000" y="492" width="40" height="3" rx="1.5" fill="#F4D3A0"/>
+          <g clip-path="url(#cGateClip)"><g class="gate">
+            <rect x="955" y="490" width="130" height="110" fill="#8E6243"/>
+            <g fill="#A57451"><rect x="955" y="492" width="130" height="8"/><rect x="955" y="503" width="130" height="8"/><rect x="955" y="514" width="130" height="8"/><rect x="955" y="525" width="130" height="8"/><rect x="955" y="536" width="130" height="8"/><rect x="955" y="547" width="130" height="8"/><rect x="955" y="558" width="130" height="8"/><rect x="955" y="569" width="130" height="8"/><rect x="955" y="580" width="130" height="8"/><rect x="955" y="591" width="130" height="8"/></g>
+          </g></g>
+
+          <!-- Cámaras -->
+          <g class="m-camaras">
+            <path class="cone" d="M1092 478 1010 648h170z"/>
+            <rect x="1086" y="470" width="12" height="7" rx="2" fill="#4A4540"/><circle class="led" cx="1089" cy="473.5" r="1.6"/>
+          </g>
+          <g class="m-camaras-per">
+            <path class="cone" d="M404 318 300 600h140z"/>
+            <rect x="398" y="310" width="12" height="7" rx="2" fill="#4A4540"/><circle class="led" cx="401" cy="313.5" r="1.6"/>
+          </g>
+
+          <!-- Sensores -->
+          <g class="m-sensores"><g><circle cx="920" cy="486" r="3" fill="#F4D3A0"/><circle class="pulse" cx="920" cy="486" r="3"/></g><g><circle cx="848" cy="458" r="3" fill="#F4D3A0"/><circle class="pulse" cx="848" cy="458" r="3"/></g><g><circle cx="424" cy="340" r="3" fill="#F4D3A0"/><circle class="pulse" cx="424" cy="340" r="3"/></g></g>
+
+          <!-- Red profesional (siempre incluida) -->
+          <g class="m-red" fill="none" stroke="#F4E6CF" stroke-width="2" stroke-linecap="round" opacity=".75"><path d="M786 392a20 20 0 0 1 28 0"/><path d="M779 385a30 30 0 0 1 42 0"/><circle cx="800" cy="398" r="2.2" fill="#F4E6CF" stroke="none"/></g>
+
+          <!-- Luces -->
+          <rect x="864" y="462" width="6" height="12" rx="1" fill="#4A4540"/>
+          <rect x="944" y="474" width="6" height="12" rx="1" fill="#4A4540"/>
+          <circle cx="867" cy="478" r="42" fill="url(#cGlow)" opacity=".7"/>
+          <circle cx="947" cy="490" r="42" fill="url(#cGlow)" opacity=".7"/>
+          <g opacity=".7"><circle cx="760" cy="612" r="3" fill="#F4D3A0"/><circle cx="820" cy="612" r="3" fill="#F4D3A0"/><circle cx="360" cy="612" r="3" fill="#F4D3A0"/><circle cx="760" cy="612" r="20" fill="url(#cGlow)"/><circle cx="820" cy="612" r="20" fill="url(#cGlow)"/><circle cx="360" cy="612" r="20" fill="url(#cGlow)"/></g>
+          <circle class="glow glow-bed" cx="520" cy="382" r="80" fill="url(#cGlow)"/>
+          <circle class="glow glow-liv" cx="536" cy="520" r="92" fill="url(#cGlow)"/>
+          <circle class="glow glow-kit" cx="772" cy="505" r="70" fill="url(#cGlow)"/>
+          <circle class="glow glow-gar" cx="1020" cy="540" r="70" fill="url(#cGlow)"/>
+
+          <path class="m-solar-flow" d="M540 290V300M686 296h8v124" stroke="#E9B566" stroke-width="3" fill="none" stroke-dasharray="4 10"/>
+        </svg>
+        <div class="cfg-chip" id="cfgChip" aria-hidden="true"></div>
+      </div>
+
+      <div class="cfg-level" aria-live="polite">
+        <div class="cfg-meter" role="img" id="cfgMeterLabel" aria-label="Nivel recomendado">
+          <span data-l="esencial">Esencial</span><span data-l="confort">Confort</span><span data-l="integral">Integral</span>
+        </div>
+        <p class="cfg-level-text" id="cfgLevelText"></p>
+      </div>
+    </div>
+
+    <!-- Pasos -->
+    <div class="cfg-steps">
+      <section class="cfg-step" id="paso-proyecto" aria-labelledby="h-proyecto">
+        <header><span class="n">01</span><h2 id="h-proyecto">Tu proyecto</h2></header>
+        <fieldset class="cfg-field">
+          <legend>¿En qué etapa está tu casa?</legend>
+          <div class="cfg-cards" id="optEtapa">
+            <label><input type="radio" name="etapa" value="diseno" id="etapa-diseno"><span><b>En diseño o por construir</b><small>El mejor momento: todo queda integrado desde el plano.</small></span></label>
+            <label><input type="radio" name="etapa" value="obra" id="etapa-obra"><span><b>En obra</b><small>Aún estamos a tiempo de dejar todo preparado.</small></span></label>
+            <label><input type="radio" name="etapa" value="construida" id="etapa-construida"><span><b>Ya construida</b><small>Usamos equipo inalámbrico profesional, sin romper muros.</small></span></label>
+          </div>
+        </fieldset>
+        <fieldset class="cfg-field">
+          <legend>Tamaño aproximado</legend>
+          <div class="seg seg-fill" id="optM2">
+            <label><input type="radio" name="m2" value="hasta-200" id="m2-1"><span>Hasta 200 m²</span></label>
+            <label><input type="radio" name="m2" value="200-350" id="m2-2"><span>200 a 350 m²</span></label>
+            <label><input type="radio" name="m2" value="350-500" id="m2-3"><span>350 a 500 m²</span></label>
+            <label><input type="radio" name="m2" value="mas-500" id="m2-4"><span>Más de 500 m²</span></label>
+          </div>
+        </fieldset>
+        <div class="cfg-row">
+          <fieldset class="cfg-field">
+            <legend>Niveles</legend>
+            <div class="seg seg-fill" id="optNiveles">
+              <label><input type="radio" name="niveles" value="1" id="niv-1"><span>1</span></label>
+              <label><input type="radio" name="niveles" value="2" id="niv-2"><span>2</span></label>
+              <label><input type="radio" name="niveles" value="3" id="niv-3"><span>3 o más</span></label>
+            </div>
+          </fieldset>
+          <div class="cfg-field field">
+            <label for="cfgCiudad" class="legend-like">Ciudad</label>
+            <select id="cfgCiudad" name="ciudad"><option>León</option><option>Querétaro</option><option>San Miguel de Allende</option><option>Guanajuato</option><option>Irapuato</option><option>Celaya</option><option>Aguascalientes</option><option>Otra</option></select>
+          </div>
+        </div>
+        <p class="cfg-retro" id="cfgRetro" hidden>En casas terminadas elegimos equipo que se instala sin obra: apagadores inalámbricos, motores de cortina con batería y sensores sin cables. En una visita revisamos qué permite tu casa.</p>
+      </section>
+
+      <section class="cfg-step" id="paso-casa" aria-labelledby="h-casa">
+        <header><span class="n">02</span><h2 id="h-casa">Lo que quieres que haga tu casa</h2></header>
+        <div class="cfg-mods" id="cfgMods"></div>
+        <div class="cfg-included">
+          <p>Siempre incluido</p>
+          <ul>
+            <li><svg><use href="#i-wifi"/></svg>Red profesional para toda la casa</li>
+            <li><svg><use href="#i-app"/></svg>App NIDEA</li>
+            <li><svg><use href="#i-support"/></svg>Instalación y soporte continuo</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="cfg-step" id="paso-control" aria-labelledby="h-control">
+        <header><span class="n">03</span><h2 id="h-control">Cómo la van a usar</h2></header>
+        <p class="cfg-hint">Toda la familia debe poder usar la casa, tenga o no celular.</p>
+        <div class="cfg-checks" id="cfgControl">
+          <label class="is-fixed"><input type="checkbox" checked disabled id="ctl-app"><span><svg><use href="#i-app"/></svg><b>App NIDEA</b><small>En iPhone y Android, para toda la familia.</small><em>Incluida</em></span></label>
+          <label><input type="checkbox" name="control" value="botoneras" id="ctl-botoneras"><span><svg><use href="#i-keypad"/></svg><b>Botoneras de pared</b><small>Un botón para cada escena, junto a la puerta.</small></span></label>
+          <label><input type="checkbox" name="control" value="voz" id="ctl-voz"><span><svg><use href="#i-voice"/></svg><b>Control por voz</b><small>Con Alexa, Siri o Google, el que ya usen en casa.</small></span></label>
+        </div>
+      </section>
+
+      <section class="cfg-step cfg-summary" id="cotizar" aria-labelledby="h-resumen">
+        <header><span class="n">04</span><h2 id="h-resumen">Tu casa NIDEA</h2></header>
+        <div class="cfg-result">
+          <svg class="cfg-result-mark" viewBox="0 0 34 40" aria-hidden="true"><path class="fill" d=""/><path class="arch" d="M5 38V17a12 12 0 0 1 24 0v21"/><circle cx="17" cy="29" r="3.6"/></svg>
+          <div>
+            <p class="cfg-result-kicker">Se parece más a</p>
+            <p class="cfg-result-name" id="sumLevel">Confort</p>
+            <p class="cfg-result-tag" id="sumTag">La casa que te conoce.</p>
+          </div>
+        </div>
+        <dl class="cfg-sum" id="cfgSum"></dl>
+        <button type="button" class="cfg-copy" id="cfgCopy"><svg><use href="#i-link"/></svg><span>Copiar el enlace de esta configuración</span></button>
+
+        <form class="visit-form cfg-form" id="cfgForm" novalidate>
+          <p class="cfg-form-title">Cotiza esta configuración</p>
+          <div class="field">
+            <label for="qNombre">Nombre</label>
+            <input id="qNombre" name="nombre" autocomplete="name" required>
+            <small class="err">Escribe tu nombre para saber a quién buscar.</small>
+          </div>
+          <div class="field">
+            <label for="qTel">WhatsApp o teléfono</label>
+            <input id="qTel" name="telefono" type="tel" inputmode="tel" autocomplete="tel" required placeholder="477 000 0000">
+            <small class="err">Escribe un número de 10 dígitos para enviarte tu cotización.</small>
+          </div>
+          <div class="field">
+            <label for="qNota">Algo más que debamos saber <span class="opt">(opcional)</span></label>
+            <textarea id="qNota" name="nota" rows="3" placeholder="Por ejemplo: ya tenemos paneles solares, o queremos empezar por la planta baja."></textarea>
+          </div>
+          <button class="btn btn-block" type="submit">Cotizar esta configuración</button>
+          <p class="form-fine">Sin compromiso. Te contactamos en menos de un día hábil.</p>
+          <div class="form-done" id="qDone" hidden tabindex="-1">
+            <svg viewBox="0 0 34 40" aria-hidden="true"><path d="M5 38V17a12 12 0 0 1 24 0v21"/><circle cx="17" cy="29" r="3.6"/></svg>
+            <h3 id="qDoneTitle">Gracias. Ya tenemos tu configuración.</h3>
+            <p>Te escribimos por WhatsApp en menos de un día hábil para revisarla contigo y agendar una visita o una llamada de diseño.</p>
+          </div>
+        </form>
+      </section>
+    </div>
+  </div>
+
+  <div class="cfg-bar" id="cfgBar">
+    <span><small>Tu casa se parece a</small><b id="barLevel">Confort</b></span>
+    <a class="btn btn-small" href="#cotizar">Ver resumen</a>
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-base"><span>© 2026 NIDEA</span><a href="/">Volver al inicio</a></div>
+</footer>
+
+<script src="/js/configurador.js"></script>
+</body>
+</html>
