@@ -31,27 +31,41 @@
   };
   // at: punto del dibujo donde aparece la etiqueta al activar el módulo
   const MODULES = [
-    { id: 'luz', name: 'Iluminación', icon: 'i-bulb', desc: 'Luz que cambia de tono durante el día y escenas para cada momento.', retro: 'Apagadores inalámbricos, sin cablear de nuevo.',
+    { id: 'luz', short: 'Luz que cambia de tono y escenas para cada momento.', name: 'Iluminación', icon: 'i-bulb', desc: 'Luz que cambia de tono durante el día y escenas para cada momento.', retro: 'Apagadores inalámbricos, sin cablear de nuevo.',
       opts: [['principales', 'Áreas principales', 'esencial'], ['toda', 'Toda la casa', 'integral']], at: [540, 468], chip: 'Luz cálida al llegar' },
-    { id: 'cortinas', name: 'Cortinas motorizadas', icon: 'i-curtain', desc: 'Se abren con el primer sol y se cierran cuando entra el calor.', retro: 'Motores con batería, sin obra.',
+    { id: 'cortinas', short: 'Se abren con el sol y se cierran con el calor.', name: 'Cortinas motorizadas', icon: 'i-curtain', desc: 'Se abren con el primer sol y se cierran cuando entra el calor.', retro: 'Motores con batería, sin obra.',
       level: 'confort', at: [540, 468], chip: 'Cortinas a la mitad' },
-    { id: 'porton', name: 'Portón automático', icon: 'i-gate', desc: 'Se abre solo cuando llegas y se cierra detrás de ti.', retro: 'Casi siempre se conecta al motor que ya tienes.',
+    { id: 'porton', short: 'Se abre solo cuando llegas.', name: 'Portón automático', icon: 'i-gate', desc: 'Se abre solo cuando llegas y se cierra detrás de ti.', retro: 'Casi siempre se conecta al motor que ya tienes.',
       level: 'esencial', at: [1020, 490], chip: 'Portón abriendo' },
-    { id: 'camaras', name: 'Cámaras', icon: 'i-cam', desc: 'Tu casa en vivo desde donde estés, con avisos solo cuando importa.', retro: 'Puede requerir cableado puntual; lo revisamos en la visita.',
+    { id: 'camaras', short: 'Tu casa en vivo, con avisos cuando importa.', name: 'Cámaras', icon: 'i-cam', desc: 'Tu casa en vivo desde donde estés, con avisos solo cuando importa.', retro: 'Puede requerir cableado puntual; lo revisamos en la visita.',
       opts: [['entrada', 'Entrada', 'esencial'], ['perimetro', 'Todo el perímetro', 'integral']], at: [1092, 468], chip: 'Cámaras vigilando' },
-    { id: 'cerradura', name: 'Cerradura inteligente', icon: 'i-lock', desc: 'Llaves temporales para quien tú decidas y cierre automático en la noche.', retro: 'Reemplaza la chapa actual en una mañana.',
+    { id: 'cerradura', short: 'Llaves temporales y cierre automático.', name: 'Cerradura inteligente', icon: 'i-lock', desc: 'Llaves temporales para quien tú decidas y cierre automático en la noche.', retro: 'Reemplaza la chapa actual en una mañana.',
       level: 'esencial', at: [868, 528], chip: 'Puerta cerrada' },
-    { id: 'clima', name: 'Clima', icon: 'i-temp', desc: 'La casa fresca antes de que llegues, sin desperdiciar energía.', retro: 'Se integra a los equipos que ya tienes, según el modelo.',
+    { id: 'clima', short: 'La casa fresca antes de que llegues.', name: 'Clima', icon: 'i-temp', desc: 'La casa fresca antes de que llegues, sin desperdiciar energía.', retro: 'Se integra a los equipos que ya tienes, según el modelo.',
       opts: [['principales', 'Áreas principales', 'confort'], ['zonas', 'Por zonas', 'confort']], at: [614, 504], chip: 'Sala a 23°' },
-    { id: 'sensores', name: 'Sensores', icon: 'i-sensor', desc: 'Puertas, ventanas, movimiento y fugas de agua: la casa se da cuenta sola.', retro: 'Inalámbricos, se instalan en minutos.',
+    { id: 'sensores', short: 'Puertas, ventanas y fugas: se da cuenta sola.', name: 'Sensores', icon: 'i-sensor', desc: 'Puertas, ventanas, movimiento y fugas de agua: la casa se da cuenta sola.', retro: 'Inalámbricos, se instalan en minutos.',
       level: 'confort', at: [920, 482], chip: 'Sensores activos' },
-    { id: 'solar', name: 'Energía solar', icon: 'i-sun', desc: 'La casa aprovecha las horas de sol para bajar el recibo de CFE.', retro: 'Funciona con los paneles que ya tienes o con unos nuevos.',
+    { id: 'solar', short: 'Usa el sol para bajar tu recibo de CFE.', name: 'Energía solar', icon: 'i-sun', desc: 'La casa aprovecha las horas de sol para bajar el recibo de CFE.', retro: 'Funciona con los paneles que ya tienes o con unos nuevos.',
       opts: [['monitoreo', 'Ver mi energía', 'confort'], ['gestion', 'La casa la administra', 'integral']], at: [540, 258], chip: 'Energía del sol' },
-    { id: 'audio', name: 'Audio', icon: 'i-speaker', desc: 'Música en los espacios que elijas, desde la app o la pared.', retro: 'Bocinas inalámbricas o empotradas, según el espacio.',
+    { id: 'audio', short: 'Música en los espacios que elijas.', name: 'Audio', icon: 'i-speaker', desc: 'Música en los espacios que elijas, desde la app o la pared.', retro: 'Bocinas inalámbricas o empotradas, según el espacio.',
       level: 'integral', at: [598, 536], chip: 'Música en la sala' },
-    { id: 'electro', name: 'Electrodomésticos', icon: 'i-fridge', desc: 'Lavadora y calentador trabajan cuando hay sol, no cuando cuesta más.', retro: 'Con equipos compatibles.',
+    { id: 'electro', short: 'Lavadora y calentador trabajan con sol.', name: 'Electrodomésticos', icon: 'i-fridge', desc: 'Lavadora y calentador trabajan cuando hay sol, no cuando cuesta más.', retro: 'Con equipos compatibles.',
       level: 'integral', at: [809, 512], chip: 'Lavadora con sol' }
   ];
+
+  /* ---------- Viñetas de cada módulo (viewBox 160×100). Clases: .ln trazo, .on visible al activarse ---------- */
+  const VIG = {
+    luz: `<path class="ln" d="M80 0v24"/><path class="on cone" d="M66 38 34 92h92L94 38z"/><path class="ln shade" d="M64 40 72 24h16l8 16z"/><circle class="bulb" cx="80" cy="42" r="4"/><path class="ln" d="M40 76h80M52 76v16M108 76v16"/><path class="ln faint" d="M12 92h136"/>`,
+    cortinas: `<circle class="on sun" cx="92" cy="40" r="11"/><path class="on sun-r ln" d="M92 22v-4M92 62v-4M74 40h-4M114 40h-4M79 27l-3-3M105 27l3-3"/><rect class="ln" x="44" y="16" width="72" height="72"/><path class="ln" d="M38 13h84"/><g class="cl"><rect class="cloth" x="44" y="16" width="36" height="72"/><path class="pleat" d="M53 16v72M62 16v72M71 16v72"/></g><g class="cr"><rect class="cloth" x="80" y="16" width="36" height="72"/><path class="pleat" d="M89 16v72M98 16v72M107 16v72"/></g><path class="ln faint" d="M12 92h136"/>`,
+    porton: `<rect class="ln" x="26" y="34" width="108" height="58"/><rect class="dark" x="28" y="36" width="104" height="56"/><path class="on glow" d="M60 36h40l24 56H36z"/><g class="car"><path d="M52 84v-8l8-10h40l8 10v8z"/><circle cx="62" cy="86" r="5"/><circle cx="98" cy="86" r="5"/></g><g clip-path="url(#vgGateClip)"><g class="gt"><rect class="wood" x="28" y="36" width="104" height="56"/><path class="slat" d="M28 44h104M28 52h104M28 60h104M28 68h104M28 76h104M28 84h104"/></g></g><path class="ln faint" d="M8 92h144"/>`,
+    camaras: `<path class="ln" d="M22 26v66"/><path class="on cone" d="M54 44 150 70v22H96z"/><rect class="ln" x="24" y="36" width="30" height="14" rx="3"/><circle class="ln" cx="49" cy="43" r="3.5"/><circle class="rec" cx="31" cy="41" r="2.2"/><g class="on person"><circle cx="122" cy="62" r="5"/><path d="M114 92v-14a8 8 0 0 1 16 0v14z"/></g><path class="ln faint" d="M8 92h144"/>`,
+    cerradura: `<rect class="ln" x="60" y="10" width="44" height="82"/><path class="ln" d="M96 48v16"/><rect class="ln" x="44" y="40" width="10" height="20" rx="2"/><circle class="led" cx="49" cy="45" r="2.4"/><path class="ln faint" d="M49 51v5"/><g class="on"><rect class="ln" x="116" y="30" width="22" height="38" rx="4"/><path class="ln ok" d="m121 49 4 4 8-9"/><path class="ln wave" d="M110 42a10 10 0 0 0 0 14"/></g><path class="ln faint" d="M12 92h136"/>`,
+    clima: `<circle class="ln" cx="62" cy="50" r="28"/><circle class="ln faint" cx="62" cy="50" r="21"/><text class="num" x="62" y="57" text-anchor="middle">23°</text><g class="on air"><path d="M100 36c8-5 14 5 22 0s14 5 22 0"/><path d="M100 50c8-5 14 5 22 0s14 5 22 0"/><path d="M100 64c8-5 14 5 22 0s14 5 22 0"/></g>`,
+    sensores: `<rect class="ln" x="36" y="14" width="64" height="74"/><path class="ln" d="M68 14v74M36 51h64"/><rect class="dev" x="100" y="40" width="7" height="18" rx="2"/><circle class="rip" cx="103.5" cy="49" r="4"/><circle class="rip r2" cx="103.5" cy="49" r="4"/><circle class="dotl" cx="103.5" cy="44" r="1.6"/><path class="ln faint" d="M12 92h136"/>`,
+    solar: `<circle class="sunb" cx="128" cy="44" r="10"/><path class="on ln sun-r" d="M128 29v-3M128 62v-3M113 44h-3M146 44h-3M118 34l-2-2M138 34l2-2"/><rect class="ln" x="30" y="50" width="76" height="42"/><path class="panel" d="M34 50l6-12h22l-6 12zM62 50l6-12h22l-6 12z"/><path class="on flow" d="M62 50v18h8"/><rect class="ln" x="70" y="62" width="22" height="30"/><path class="on glint" d="M34 50l6-12h22l-6 12zM62 50l6-12h22l-6 12z"/><path class="ln faint" d="M8 92h144"/>`,
+    audio: `<rect class="ln" x="56" y="22" width="30" height="64" rx="4"/><circle class="ln" cx="71" cy="64" r="11"/><circle class="ln" cx="71" cy="64" r="3"/><circle class="ln" cx="71" cy="38" r="5"/><g class="wv"><path class="ln w1" d="M96 46a14 14 0 0 1 0 22"/><path class="ln w2" d="M104 38a26 26 0 0 1 0 38"/><path class="ln w3" d="M112 30a38 38 0 0 1 0 54"/></g>`,
+    electro: `<rect class="ln" x="54" y="16" width="52" height="76" rx="4"/><path class="ln" d="M54 30h52"/><circle class="ln" cx="64" cy="23" r="2"/><circle class="ln" cx="72" cy="23" r="2"/><circle class="ln" cx="80" cy="60" r="18"/><g class="drum"><circle class="water" cx="80" cy="60" r="13"/><path class="ln" d="M72 58c4-5 12-5 16 0"/></g><g class="on"><circle class="sunb" cx="128" cy="50" r="7"/><path class="ln" d="M128 38v-3M128 65v-3M116 50h-3M143 50h-3"/></g><path class="ln faint" d="M12 92h136"/>`
+  };
   const ETAPAS = { diseno: 'En diseño o por construir', obra: 'En obra', construida: 'Ya construida' };
   const M2 = { 'hasta-200': 'Hasta 200 m²', '200-350': '200 a 350 m²', '350-500': '350 a 500 m²', 'mas-500': 'Más de 500 m²' };
   const CONTROL = { botoneras: 'Botoneras de pared', voz: 'Control por voz' };
@@ -115,10 +129,9 @@
     wrap.dataset.id = m.id;
     const lvl = m.opts ? LEVELS[m.opts[0][2]].name : LEVELS[m.level].name;
     wrap.innerHTML = `
-      <button type="button" class="mod-main" role="switch" aria-checked="false" id="mod-${m.id}">
-        <svg aria-hidden="true"><use href="#${m.icon}"/></svg>
-        <span><span class="mod-name">${m.name}</span><span class="mod-desc">${m.desc}</span><span class="mod-retro">${m.retro}</span></span>
-        <span class="mod-side"><span class="mod-lvl">Desde ${lvl}</span><span class="tg" aria-hidden="true"></span></span>
+      <button type="button" class="mod-main" role="switch" aria-checked="false" id="mod-${m.id}" title="${m.desc}">
+        <span class="mod-vis"><svg class="vg vg-${m.id}" viewBox="0 0 160 100" aria-hidden="true">${VIG[m.id]}</svg><span class="mod-lvl">${lvl}</span><span class="mod-check" aria-hidden="true"></span></span>
+        <span class="mod-body"><span class="mod-name">${m.name}</span><span class="mod-desc">${m.short}</span><span class="mod-retro">${m.retro}</span></span>
       </button>
       ${m.opts ? `<div class="mod-opts" hidden><div class="seg" role="radiogroup" aria-label="${m.name}">${m.opts.map(o => `<button type="button" role="radio" aria-checked="false" data-opt="${o[0]}">${o[1]}</button>`).join('')}</div></div>` : ''}`;
     modsEl.appendChild(wrap);
